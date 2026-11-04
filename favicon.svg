@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Zenflow Timer</title>
+  <rect width="64" height="64" rx="16" fill="#090a0f"/>
+  <path d="M27 10h10M32 10v6M46 18l3-3" fill="none" stroke="#c8b5ff" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="32" cy="36" r="19" fill="none" stroke="#c8b5ff" stroke-opacity=".25" stroke-width="4"/>
+  <path d="M32 17a19 19 0 1 1-19 19" fill="none" stroke="#c8b5ff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M32 25v11l7 5" fill="none" stroke="#c8b5ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
