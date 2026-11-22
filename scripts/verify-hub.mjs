@@ -22,7 +22,8 @@ for (const [url, rel] of Object.entries(pages)) {
   const source = fs.readFileSync(fp, 'utf8');
   const low = plain(source).toLowerCase();
   if ((source.match(/<h1[^>]*>/g) || []).length !== 1) failures.push(`${rel}: h1 count`);
-  if ((source.match(/ca-pub-3686574001707459/g) || []).length !== 1) failures.push(`${rel}: adsense count`);
+  if ((source.match(/pagead\/js\/adsbygoogle\.js\?client=ca-pub-3686574001707459/g) || []).length !== 1) failures.push(`${rel}: adsense script count`);
+  if ((source.match(/<meta name="google-adsense-account" content="ca-pub-3686574001707459">/g) || []).length !== 1) failures.push(`${rel}: adsense account meta count`);
   if (!source.includes(`<link rel="canonical" href="${BASE}${url}">`)) failures.push(`${rel}: canonical`);
   const title = source.match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? '';
   if (!title || title.length > 70) failures.push(`${rel}: title`);
