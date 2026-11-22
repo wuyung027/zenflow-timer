@@ -1,0 +1,293 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SVG Optimizer &amp; Converter | ZenFlow Tools</title><meta name="description" content="Clean SVG markup, preview it, create React JSX or data URIs, and export PNG files locally. Free, private, and designed to run in your browser."><link rel="canonical" href="https://zenflow-timer.vercel.app/tools/svg-optimizer"><meta property="og:type" content="website"><meta property="og:site_name" content="ZenFlow Tools"><meta property="og:title" content="SVG Optimizer &amp; Converter | ZenFlow Tools"><meta property="og:description" content="Clean SVG markup, preview it, create React JSX or data URIs, and export PNG files locally. Free, private, and designed to run in your browser."><meta property="og:url" content="https://zenflow-timer.vercel.app/tools/svg-optimizer"><meta name="twitter:card" content="summary"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3686574001707459" crossorigin="anonymous"></script><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"SVG Optimizer & Converter","url":"https://zenflow-timer.vercel.app/tools/svg-optimizer","description":"Clean SVG markup, preview it, create React JSX or data URIs, and export PNG files locally.","applicationCategory":"DeveloperApplication","operatingSystem":"Any modern web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"isAccessibleForFree":true},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://zenflow-timer.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://zenflow-timer.vercel.app/tools"},{"@type":"ListItem","position":3,"name":"SVG Optimizer & Converter","item":"https://zenflow-timer.vercel.app/tools/svg-optimizer"}]}]}</script><style>
+    :root{color-scheme:dark;--bg:#0a0d14;--panel:#121725;--panel2:#171e2e;--line:#30384d;--text:#f2f3ff;--muted:#a0a6bd;--purple:#a995ff;--pink:#f7a1d5;--green:#77e5bd;--red:#ff9fba}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse 72% 25% at 50% -5%,#3d2358 0%,transparent 75%),var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',system-ui,sans-serif;line-height:1.55}button,input,textarea,select{font:inherit}button{cursor:pointer}a{color:#c5afff}a:hover{color:#f0d6ff}svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}.wrap{width:min(1350px,calc(100% - 42px));margin:auto}.mono{font-family:'JetBrains Mono',monospace}.site-header{border-bottom:1px solid #2c2940;background:#0e101aca;backdrop-filter:blur(16px)}.nav{min-height:75px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:19px;font-weight:800;letter-spacing:-.055em}.brand-mark{display:grid;place-items:center;width:35px;height:35px;border:1px solid #ba94f7;border-radius:10px;background:linear-gradient(145deg,#8d5fe0,#b361a7);box-shadow:0 0 26px #ad70ff4d}.brand-mark svg{stroke:#fff}.nav-tag{font:600 10px 'JetBrains Mono',monospace;letter-spacing:.13em;color:#a8a0c4}.hero{text-align:center;padding:68px 0 43px}.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #6a478d;border-radius:99px;background:#56306a66;color:#dac0ff;padding:7px 12px;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase}.eyebrow i{width:6px;height:6px;border-radius:50%;background:#e2a6ff;box-shadow:0 0 10px #e2a6ff}.hero h1{font-size:clamp(38px,5vw,66px);line-height:1.08;letter-spacing:-.065em;margin:20px 0 16px}.hero h1 span{background:linear-gradient(100deg,#ab9cff,#f29ad6);background-clip:text;color:transparent}.hero p{margin:0;color:#bcc0d3;font-size:15px}.hero .sub{font-size:12px;color:#969db4;margin-top:9px}.hero .sub strong{color:#ddd2f7}.studio{border:1px solid var(--line);border-radius:20px;background:#111521;overflow:hidden;box-shadow:0 30px 100px #0007}.studio-bar{padding:18px 23px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--line);background:#171a2a}.bar-label{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.12em;color:#b9b4cb}.toolbar{display:flex;gap:7px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid #514b67;border-radius:9px;background:#262338;color:#e7dff5;padding:9px 12px;font-size:11px;font-weight:800;transition:.18s}.btn:hover:not(:disabled){border-color:#c79aff;background:#392e50;transform:translateY(-1px)}.btn:disabled{opacity:.45;cursor:not-allowed}.btn-primary{background:linear-gradient(105deg,#9b6ee8,#c677c1);border-color:#dc9ee4;color:#fff;box-shadow:0 9px 28px #9f5cd447}.btn-ghost{background:transparent;border-color:transparent;color:#aab0c3}.btn-ghost:hover{background:#292b3e}.btn svg{width:16px;height:16px}.studio-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr)}.source-pane,.preview-pane{padding:25px}.source-pane{border-right:1px solid var(--line)}.preview-pane{background:radial-gradient(circle at 50% 0%,#4736673b,transparent 65%)}.pane-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.pane-head h2{font-size:17px;letter-spacing:-.04em;margin:0}.pane-head h2 svg{vertical-align:-4px;color:#c19aff;margin-right:7px}.pane-head small{font:600 10px 'JetBrains Mono',monospace;color:#8c90aa}.pane-sub{margin:4px 0 17px;color:#939bb3;font-size:11px}.dropzone{border:1px dashed #5c5270;border-radius:10px;background:#171a2a;padding:9px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px;color:#aeb3c8;font-size:11px;margin-bottom:11px}.dropzone.dragover{border-color:#e3a7f7;background:#453052}.dropzone button{border:0;background:transparent;color:#d9b7ff;font-size:11px;font-weight:800;text-decoration:underline}.source-label{display:block;color:#b9c0d5;font-size:11px;font-weight:700;margin-bottom:7px}.source-code{display:block;min-height:295px;width:100%;resize:vertical;border:1px solid #44435a;border-radius:11px;background:#0b101c;color:#d9d8f3;outline:0;padding:15px;font:500 11px/1.65 'JetBrains Mono',monospace;tab-size:2}.source-code:focus{border-color:#bd93ff;box-shadow:0 0 0 3px #a477ff25}.source-code::placeholder{color:#6d748e}.status-line{min-height:21px;margin-top:8px;font-size:11px;color:#92e2bc}.status-line.error{color:var(--red)}.status-line.warn{color:#ffcf9c}.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:17px}.metric{border:1px solid #3c3a52;border-radius:9px;background:#1a1d2d;padding:12px}.metric span{display:block;color:#8e96ae;font:600 9px 'JetBrains Mono',monospace;letter-spacing:.07em;text-transform:uppercase}.metric strong{display:block;font:700 15px 'JetBrains Mono',monospace;color:#f2edff;margin-top:4px}.metric:last-child strong{color:#a4efc6}.preview-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}.segment{display:inline-flex;border:1px solid #48445d;border-radius:9px;overflow:hidden;background:#1a1a2a}.segment button{border:0;border-right:1px solid #48445d;background:transparent;color:#aeb4c7;padding:7px 10px;font-size:10px;font-weight:800}.segment button:last-child{border-right:0}.segment button.active{background:#624a82;color:#fff}.zoom-label{margin-left:auto;color:#a3a9be;font:600 10px 'JetBrains Mono',monospace}.zoom-label select{border:1px solid #4a455c;border-radius:7px;background:#1c1f2e;color:#e8e2f5;padding:6px;font:600 10px 'JetBrains Mono',monospace}.preview-stage{height:322px;border:1px solid #45445a;border-radius:12px;overflow:auto;display:flex;align-items:center;justify-content:center;background-color:#e3e3e8;background-image:linear-gradient(45deg,#cbd0da 25%,transparent 25%),linear-gradient(-45deg,#cbd0da 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#cbd0da 75%),linear-gradient(-45deg,transparent 75%,#cbd0da 75%);background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0}.preview-stage.dark{background:#111522}.preview-stage.light{background:#fff}.preview-stage img{display:block;flex:none;width:60%;height:auto;max-height:none;margin:auto}.preview-empty{color:#676d81;background:#eff0f3dc;border-radius:8px;padding:10px 14px;font-size:11px;font-weight:700;text-align:center}.preview-stage.dark .preview-empty{color:#a9a5be;background:#222337}.preview-stage.light .preview-empty{color:#656979;background:#f1f2f6}.preview-caption{font-size:10px;color:#8f94ab;margin:10px 0 0;line-height:1.5}.output-section{border-top:1px solid var(--line);padding:25px}.output-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}.output-head h2{font-size:18px;letter-spacing:-.04em;margin:0}.output-head small{font:600 10px 'JetBrains Mono',monospace;color:#8c92a9}.output-tabs{display:flex;gap:4px;border-bottom:1px solid #3d3d54;overflow:auto}.output-tab{border:0;border-bottom:2px solid transparent;background:transparent;color:#9fa5bb;white-space:nowrap;padding:11px 15px;font-size:11px;font-weight:800}.output-tab.active{border-color:#d39bff;color:#f1d9ff}.output-content{padding:19px 0 2px}.output-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:11px}.output-toolbar h3{font-size:13px;margin:0}.output-toolbar p{font-size:10px;color:#939bb1;margin:2px 0 0}.switch{display:inline-flex;gap:8px;align-items:center;color:#bcc1d2;font-size:11px;font-weight:700}.switch input{accent-color:#ba88ed;width:15px;height:15px}.code-output{border:1px solid #393c54;border-radius:10px;background:#0b101c;color:#d7d6ef;padding:17px;font:500 11px/1.65 'JetBrains Mono',monospace;white-space:pre-wrap;overflow-wrap:anywhere;max-height:340px;overflow:auto;min-height:160px;margin:0}.output-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}.png-options{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:5px 0 17px}.png-options h4{margin:0 0 8px;color:#d8d2e9;font-size:11px}.radio-row{display:flex;flex-wrap:wrap;gap:7px}.radio-chip{position:relative}.radio-chip input{position:absolute;opacity:0;width:1px;height:1px}.radio-chip span{display:block;padding:7px 10px;border:1px solid #4b4861;border-radius:8px;background:#1a1e2f;color:#afb6c9;font-size:10px;font-weight:800}.radio-chip input:checked+span{border-color:#d0a0fa;background:#5c3c73;color:#fff}.radio-chip input:focus-visible+span{outline:2px solid #dba8ff;outline-offset:2px}.custom-width{display:flex;align-items:center;gap:6px;margin-top:8px;color:#aeb4c6;font-size:10px}.custom-width input{width:90px;border:1px solid #514c67;border-radius:7px;background:#101521;color:#fff;padding:7px;font:600 11px 'JetBrains Mono',monospace}.png-dimensions{color:#b5e5d0;font:600 11px 'JetBrains Mono',monospace;margin:0}.output-hint{margin:10px 0 0;color:#8d95ab;font-size:10px}.guide-wrap{width:min(1020px,calc(100% - 42px));margin:76px auto 0}.guide-intro{text-align:center;margin-bottom:36px}.guide-intro h2{font-size:clamp(29px,3.4vw,43px);line-height:1.17;letter-spacing:-.05em;margin:16px 0 9px}.guide-intro p{font-size:13px;color:#969db3;margin:0}.content-guide{border:1px solid #35334a;border-radius:18px;background:#141826;padding:clamp(24px,4vw,56px);font-size:14px;line-height:1.85;color:#bdc2d5}.content-guide h3{color:#f1efff;font-size:21px;line-height:1.3;letter-spacing:-.035em;margin:34px 0 8px}.content-guide h3:first-child{margin-top:0}.content-guide h4{color:#e9e0fa;font-size:15px;margin:22px 0 5px}.content-guide p{margin:10px 0}.content-guide ul{padding-left:22px}.content-guide li{margin:7px 0}.content-guide code{font:500 .9em 'JetBrains Mono',monospace;color:#e1c7ff;background:#30283f;padding:2px 5px;border-radius:4px}.content-guide pre{white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #413752;border-radius:9px;background:#0d101b;color:#e3d1ff;padding:14px 17px;font:500 11px/1.65 'JetBrains Mono',monospace}.content-guide .callout{border-left:3px solid #c58de9;border-radius:0 8px 8px 0;background:#352942;color:#eddbfa;padding:13px 17px;margin:22px 0}.content-guide details{border-top:1px solid #3a3a4f;padding:13px 0}.content-guide summary{cursor:pointer;color:#f0eaff;font-weight:700}.content-guide details p{margin:8px 0 2px}.site-footer{margin-top:69px;border-top:1px solid #303145;padding:27px 0 34px}.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.footer-left{color:#888da4;font-size:11px}.footer-left strong{display:block;color:#f3efff;font-size:14px;margin-bottom:3px}.footer-links{display:flex;gap:18px;flex-wrap:wrap}.footer-links button{border:0;background:transparent;color:#a5a9bd;padding:0;font-size:11px}.footer-links button:hover{color:#f3d4ff;text-decoration:underline}dialog{width:min(590px,calc(100% - 28px));max-height:80vh;overflow:auto;border:1px solid #665277;border-radius:16px;background:#1c1d30;color:#f4f0ff;box-shadow:0 30px 100px #000b;padding:25px}dialog::backdrop{background:#080610d0;backdrop-filter:blur(6px)}dialog .modal-top{display:flex;justify-content:space-between;align-items:start;gap:12px}dialog h2{margin:0 0 12px;letter-spacing:-.04em}dialog p{font-size:13px;line-height:1.7;color:#c4c4d6}dialog .close{border:1px solid #615772;border-radius:7px;background:#313044;color:#fff;padding:5px 9px}#toast{position:fixed;z-index:50;top:20px;left:50%;transform:translate(-50%,-15px);opacity:0;pointer-events:none;border:1px solid #dfb0ff;border-radius:9px;background:#f0dcff;color:#452f59;padding:10px 15px;font-size:11px;font-weight:800;box-shadow:0 15px 40px #0008;transition:.18s}#toast.show{opacity:1;transform:translate(-50%,0)}@media(max-width:960px){.studio-grid{grid-template-columns:1fr}.source-pane{border-right:0;border-bottom:1px solid var(--line)}}@media(max-width:620px){.wrap,.guide-wrap{width:calc(100% - 28px)}.nav{min-height:63px}.nav-tag{display:none}.hero{padding:53px 0 35px}.hero h1{font-size:39px}.hero p{font-size:13px}.studio-bar,.source-pane,.preview-pane,.output-section{padding:17px}.toolbar{width:100%}.toolbar .btn{flex:1}.preview-stage{height:260px}.png-options{grid-template-columns:1fr;gap:13px}.output-tab{padding:10px 11px;font-size:10px}.metrics{gap:5px}.metric{padding:9px}.metric strong{font-size:12px}.guide-wrap{margin-top:55px}.site-footer{margin-top:50px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+    .preview-stage img[hidden],.preview-empty[hidden]{display:none}
+  </style><link rel="stylesheet" href="/assets/styles.css"></head><body><header class="zf-header"><div class="zf-wrap zf-header-inner"><a class="zf-logo" href="/" aria-label="ZenFlow Tools home"><span class="zf-logo-mark" aria-hidden="true">◆</span>ZenFlow <b>Tools</b></a><nav class="zf-nav" id="zfNav" aria-label="Primary"><a href="/">Home</a><a href="/tools" aria-current="page">Tools</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/contact">Contact</a></nav><button class="zf-nav-toggle" type="button" aria-expanded="false" aria-controls="zfNav">Menu</button></div></header><nav class="zf-crumb zf-wrap" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools">Tools</a> <span>/</span> <span aria-current="page">SVG Optimizer &amp; Converter</span></nav><main id="top">
+    <section class="hero wrap"><div class="eyebrow"><i></i> THE VECTOR STUDIO</div><h1>One SVG.<br><span>Every format you need.</span></h1><p>Instant SVG Optimizer, React JSX Component &amp; High-Res PNG Studio.</p><p class="sub"><strong>100% client-side processing:</strong> zero file uploads, privacy-safe, lightning-fast in your browser.</p></section>
+    <section class="studio wrap" aria-label="CleanSVG conversion studio"><div class="studio-bar"><span class="bar-label">01 / SOURCE &amp; PREVIEW</span><div class="toolbar"><button class="btn" type="button" id="sampleIcon">✦ Complex icon</button><button class="btn" type="button" id="sampleLogo">◈ Logo sample</button><button class="btn btn-ghost" type="button" id="clearBtn">↺ Clear</button></div></div><div class="studio-grid"><div class="source-pane"><div class="pane-head"><h2><svg><use href="#i-code"/></svg>SVG Source</h2><small>PASTE OR DROP</small></div><p class="pane-sub">Edit raw SVG markup. Outputs update as you type.</p><div class="dropzone" id="dropZone"><span><svg style="width:15px;height:15px;vertical-align:-3px"><use href="#i-upload"/></svg> Drop an .svg file here, or</span><button type="button" id="browseBtn">browse files</button><input id="fileInput" type="file" accept=".svg,image/svg+xml" hidden></div><label for="svgInput" class="source-label">SVG MARKUP</label><textarea id="svgInput" class="source-code" spellcheck="false" autocomplete="off" placeholder="<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot;>…</svg>"></textarea><div class="status-line" id="sourceStatus" role="status" aria-live="polite">Load a sample or paste an SVG to begin.</div><div class="metrics"><div class="metric"><span>Original</span><strong id="originalSize">0 B</strong></div><div class="metric"><span>Clean SVG</span><strong id="cleanSize">0 B</strong></div><div class="metric"><span>Change</span><strong id="savedSize">—</strong></div></div></div><div class="preview-pane"><div class="pane-head"><h2><svg><use href="#i-eye"/></svg>Live Preview</h2><small>SAFE IMAGE VIEW</small></div><p class="pane-sub">Inspect the cleaned vector before exporting.</p><div class="preview-controls"><div class="segment" role="group" aria-label="Preview background"><button class="active" type="button" data-background="checker" aria-pressed="true">Checker</button><button type="button" data-background="dark" aria-pressed="false">Dark</button><button type="button" data-background="light" aria-pressed="false">Light</button></div><label for="zoomSelect" class="zoom-label">ZOOM <select id="zoomSelect"><option value="100">100%</option><option value="200">200%</option><option value="400">400%</option></select></label></div><div class="preview-stage" id="previewStage"><span class="preview-empty" id="previewEmpty">Your cleaned SVG will appear here.</span><img id="previewImage" alt="Cleaned SVG preview" hidden></div><p class="preview-caption">Preview uses a sanitized SVG image. Scripts and external references are removed before rendering or export.</p></div></div>
+      <div class="output-section"><div class="output-head"><h2>Ready for your workflow</h2><small>02 / EXPORT</small></div><div class="output-tabs" id="outputTabs" role="tablist" aria-label="Output format"><button class="output-tab active" type="button" role="tab" aria-selected="true" data-tab="jsx">⚛ React JSX</button><button class="output-tab" type="button" role="tab" aria-selected="false" data-tab="css">◈ CSS Data URI</button><button class="output-tab" type="button" role="tab" aria-selected="false" data-tab="png">▣ PNG Export</button><button class="output-tab" type="button" role="tab" aria-selected="false" data-tab="svg">✦ Clean SVG</button></div><div class="output-content" id="outputPanel" role="tabpanel"></div></div></section>
+    <div class="guide-wrap"><div class="guide-intro"><div class="eyebrow"><i></i> THE FIELD GUIDE · 2026</div><h2>Better vectors, faster interfaces.</h2><p>The Complete Guide to SVG Optimization, React Components, and Web Performance in 2026</p></div><article class="content-guide">
+      <h3>Why SVG works so well on the web</h3>
+      <p>Scalable Vector Graphics, or SVG, describe an image as shapes, paths, text, and other drawing instructions rather than a fixed grid of pixels. A browser can redraw those instructions at many sizes, which makes SVG a natural fit for icons, logos, diagrams, and interface illustrations. A single asset can look sharp on a small phone and a large display. The same markup can be used as a separate image, an inline element, a CSS background, or a source for a raster export. Those options are useful, but each has different tradeoffs for styling, caching, accessibility, and security.</p>
+      <p>SVG is not automatically smaller than a PNG. A simple icon represented by a handful of paths may be compact, while an illustration exported with thousands of points, hidden layers, and editor metadata may be surprisingly large. The right format depends on the art and how it is used. Compare file size after compression, visual quality at the intended display size, and the cost of decoding or painting the image in the browser. For photographs and highly textured images, a modern raster format is usually a better starting point than converting every pixel into vector instructions.</p>
+      <h3>What SVG optimization can safely remove</h3>
+      <p>Design applications often save comments, XML declarations, metadata, unused wrapper groups, and formatting whitespace alongside the visible graphic. Removing those pieces can make an asset easier to inspect and smaller to deliver. CleanSVG parses the SVG as XML, keeps a focused set of drawing elements and presentation attributes, drops comments and unsupported content, then serializes a compact result. It also reports the byte change so you can see whether the cleaned file is smaller. Some already compact SVGs can become slightly larger when a namespace or normalized markup is added; that is shown as an increase instead of a misleading “saved” percentage.</p>
+      <p>Optimization should protect the picture, not chase the smallest possible byte count at any cost. A path rounding rule can visibly change a fine icon, and deleting a definition that is still referenced can break a gradient or clipping path. This tool intentionally avoids aggressive coordinate rewriting. It supports common geometry, paths, gradients, masks, patterns, local references, and text, but it removes scripts, embedded HTML, stylesheets, external image references, animations, and other unsupported elements. If your source depends on one of those features, compare the preview carefully and use a specialized workflow for that asset.</p>
+      <p>That restriction is also a security boundary. An SVG file can be an active document when opened directly, with behavior very different from an image embedded through <code>&lt;img&gt;</code>. The <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Guides/Scripting" target="_blank" rel="noopener noreferrer">MDN SVG scripting guide</a> explains that scripts in an SVG used as an image do not run, while a standalone SVG document can execute scripts. CleanSVG sanitizes before creating the preview and before allowing a download, because the exported file may later be opened as a standalone document. Do not assume that any arbitrary online “SVG minifier” provides the same safety properties; inspect what it keeps.</p>
+      <h3>How to improve loading performance</h3>
+      <p>Start by using the smallest asset that still looks correct. Export an icon with an appropriate view box and remove invisible editor layers. Where the same icon appears on many pages, a separately served SVG can be cached across those pages. An inline SVG can save a request and can be styled with CSS, but it repeats its markup in every page that includes it. A CSS data URI also avoids a separate image request, yet it adds encoded bytes to a stylesheet or HTML file and may be duplicated across rules. The best choice changes with reuse, bundle size, caching, and whether the drawing needs runtime styling.</p>
+      <p>Do not judge performance only by uncompressed file size. Text-based SVG compresses well over the network, so compare transferred bytes from your deployed site. A large number of complex paths, masks, filters, or gradients can still increase painting cost even after the text is minified. If the vector is visually intricate and never changes size, a raster export might use less work at runtime. For a simple logo or icon, the vector generally gives flexibility with modest markup. Test on an actual page, including slower devices, rather than treating a single optimization score as the whole user experience.</p>
+      <p>Provide dimensions or an aspect ratio to prevent layout movement while an image loads. Use a meaningful text alternative for informative images and an empty alternative for purely decorative ones. If the SVG is inline and interactive, it needs its own accessibility design, including focus behavior and a suitable name. The cleaned output is meant to be a visual asset; accessibility choices depend on the context where you place it.</p>
+      <h3>React and Next.js icon patterns</h3>
+      <p>For an icon that needs to inherit a component’s color, a small inline SVG component is convenient. React uses JavaScript property names for many SVG attributes: <code>stroke-width</code> becomes <code>strokeWidth</code>, and <code>fill-rule</code> becomes <code>fillRule</code>. The <a href="https://react.dev/reference/react-dom/components" target="_blank" rel="noopener noreferrer">React DOM component reference</a> documents this camelCase convention. CleanSVG converts retained attributes and creates a functional <code>Icon</code> component with a <code>props</code> spread. Turn on the TypeScript option to include a <code>SVGProps&lt;SVGSVGElement&gt;</code> type.</p>
+      <pre>export default function Icon(props) {
+  return (
+    &lt;svg viewBox="0 0 24 24" {...props}&gt;
+      &lt;path strokeWidth="2" d="…" /&gt;
+    &lt;/svg&gt;
+  );
+}</pre>
+      <p>In a React or Next.js codebase, keep a small, reusable icon set close to the components that use it. Name icons by meaning when possible, such as <code>SearchIcon</code> or <code>WarningIcon</code>. Give most icons a stable view box and let consumers set size through width, height, or CSS. For monochrome icons, <code>currentColor</code> makes the shape follow surrounding text color. When an icon is decorative, add appropriate accessibility attributes in its usage context; when it conveys meaning, provide an accessible name. A generated component is a starting point, not a substitute for checking the icon in the real interface.</p>
+      <p>Not every SVG needs to become a React component. A large illustration that never changes color may work better as an image file served from the public assets directory. That keeps long path data out of the JavaScript bundle and allows normal image caching. Use inline JSX when you need per-path styling, state changes, or close integration with the component tree. Use an external image when the asset is static and shared broadly. Keep that decision consistent across a design system so maintenance stays predictable.</p>
+      <h3>CSS data URIs versus inline SVG</h3>
+      <p>A CSS data URI embeds the SVG text into a <code>background-image</code> value. It is helpful for a small decorative mark, a repeated pattern, or a component style where adding an HTML image element would be awkward. CleanSVG percent-encodes the cleaned markup and writes a ready-to-copy CSS declaration. Because the image is encoded into the CSS, it cannot be individually cached as a separate asset. It also does not have the semantics of a content image, so do not use a CSS background as the only carrier of important information.</p>
+      <p>Inline SVG lives directly in the document or a React component. It can expose individual shapes for styling and interaction, and it can receive an accessible name. The tradeoff is extra markup in the page or JavaScript bundle. An external <code>&lt;img&gt;</code> is simpler, cacheable, and naturally isolated from the page’s DOM, but it does not let your CSS target internal shapes. <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Including_vector_graphics_in_HTML" target="_blank" rel="noopener noreferrer">MDN’s vector graphics guide</a> walks through these embedding choices. Pick based on what the graphic does, not just which snippet is shortest.</p>
+      <div class="callout">A small decorative icon may suit CSS. A reusable, color-aware interface icon may suit JSX. A large static illustration often suits a separate SVG image file.</div>
+      <h3>When to export PNG</h3>
+      <p>PNG is useful when a destination cannot accept SVG, such as a presentation tool, a marketplace upload, or a platform that requires raster artwork. CleanSVG uses the browser’s Canvas API to draw the cleaned SVG at 1×, 2×, 4×, or a custom width while preserving its aspect ratio. The transparent option leaves the canvas clear; white and black options paint a solid background first. The PNG is then created as a Blob and downloaded locally. The <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob" target="_blank" rel="noopener noreferrer">Canvas <code>toBlob()</code> documentation</a> explains the browser export path.</p>
+      <p>Choose the output size based on where the file will actually appear. A 4× export has sixteen times as many pixels as a 1× export when both dimensions scale, so file size and memory use can rise quickly. This studio limits extreme dimensions to protect the browser. If you need a massive print asset, use a dedicated graphics application and inspect its color management and output settings. For web icons, the clean SVG itself is often the better delivery format because it stays crisp without generating multiple raster sizes.</p>
+      <h3>A quick production checklist</h3>
+      <ul><li>Paste or upload the source, then compare the cleaned preview with the original artwork.</li><li>Check that gradients, masks, text, and local references still appear as intended.</li><li>Review the byte delta; a larger output is possible for a tiny source or when normalization adds markup.</li><li>Choose JSX for styleable component icons, a separate SVG file for reusable static images, or a data URI for small decoration.</li><li>Verify the generated React component in the project’s actual React version and build pipeline.</li><li>Export PNG at the dimensions the receiving product requests, including the correct background.</li><li>Give content images appropriate alternative text and keep decorative graphics from adding noise to assistive technology.</li></ul>
+      <h3>Frequently asked questions</h3>
+      <details><summary>Does CleanSVG upload my SVG?</summary><p>No. SVG parsing, sanitizing, conversion, preview, and raster export happen in your browser. The page itself loads Google Fonts and an AdSense script, but your SVG source is not sent to a CleanSVG server for processing.</p></details>
+      <details><summary>Why did part of my SVG disappear?</summary><p>The sanitizer removes unsupported or potentially active content, including scripts, embedded HTML, external references, stylesheets, and animation. Some advanced editor exports depend on those features. Compare the preview before downloading; use a specialist optimizer when you must preserve advanced effects.</p></details>
+      <details><summary>Does optimization always reduce file size?</summary><p>No. Adding a required namespace, normalizing markup, or preserving essential attributes can increase the bytes of a tiny SVG. The savings metric reports the actual UTF-8 byte difference, including an increase when one occurs.</p></details>
+      <details><summary>Why might a PNG look different from the preview?</summary><p>Canvas rasterization uses the browser’s renderer and selected pixel dimensions. Fonts unavailable on the device, unsupported SVG features, or a different background can change the result. Check the downloaded PNG itself before using it in a final asset.</p></details>
+      <details><summary>Can I use the generated JSX in TypeScript?</summary><p>Yes. Enable the TypeScript option to add the React SVG props type. You may still want to rename the component, add accessibility defaults, or adapt its color and size behavior to your design system.</p></details>
+      <p>A good vector workflow is repeatable: keep a source asset, clean it carefully, preview it, choose the embedding method that fits the interface, and test the final result where users will see it. CleanSVG makes those first steps quick while leaving the visual and accessibility decisions in your hands.</p>
+    </article></div>
+  <aside class="zf-related" aria-labelledby="rel-title"><h2 id="rel-title">Related tools</h2><div class="zf-related-grid"><a class="zf-card" href="/tools/dev-units"><b>Unit & Color Converter</b><span>Convert CSS units, color formats, and Unix timestamps with copy-ready output that stays in your browser.</span></a><a class="zf-card" href="/tools/og-preview"><b>Social & OG Preview</b><span>Preview Open Graph and social cards, validate metadata fields, and copy complete tags before publishing.</span></a><a class="zf-card" href="/tools/markdown-converter"><b>Markdown Converter</b><span>Turn pasted rich text or HTML into clean Markdown, preview it, and download the result locally.</span></a></div><p class="zf-guide-cta">Deep dive: <a href="/guides/pomodoro-focus-science">Read the related practical guide</a></p></aside><p class="zf-updated">Last updated: November 22, 2026</p></main><footer class="zf-footer"><div class="zf-wrap zf-footer-grid"><div class="zf-footer-brand"><a class="zf-logo" href="/">ZenFlow <b>Tools</b></a><p>Free browser tools for focused work, clean text, and faster development. Everything runs locally in your browser — no accounts, no uploads.</p></div><nav aria-label="Free tools"><p class="zf-footer-title">Tools</p><ul><li><a href="/tools/pomodoro">Pomodoro Timer & Focus Soundscapes</a></li><li><a href="/tools/password-generator">Password Generator & Strength Checker</a></li><li><a href="/tools/word-counter">Word Counter & Speaking Time</a></li><li><a href="/tools/text-diff">Text & Code Diff</a></li><li><a href="/tools/dev-units">Unit & Color Converter</a></li><li><a href="/tools/markdown-converter">Markdown Converter</a></li><li><a href="/tools/json-formatter">JSON Formatter & TypeScript Generator</a></li><li><a href="/tools/og-preview">Social & OG Preview</a></li><li><a href="/tools/cron-builder">Cron Schedule Builder</a></li><li><a href="/tools/svg-optimizer">SVG Optimizer & Converter</a></li></ul></nav><nav aria-label="Guides"><p class="zf-footer-title">Guides</p><ul><li><a href="/guides/pomodoro-focus-science">Focus intervals</a></li><li><a href="/guides/developer-workflow-privacy">Private workflows</a></li><li><a href="/guides/ambient-sound-productivity">Ambient sound</a></li></ul></nav><nav aria-label="Site"><p class="zf-footer-title">Site</p><ul><li><a href="/about">About</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms of Service</a></li><li><a href="/contact">Contact</a></li></ul></nav></div><div class="zf-wrap zf-footer-bottom"><p>© 2026 ZenFlow Tools. Built and maintained by wuyung.</p><p>No accounts. No uploads. Your text and files stay on your device.</p></div></footer><script src="/assets/hub.js"></script><script>
+    'use strict';
+    const SVG_NS='http://www.w3.org/2000/svg';
+    const MAX_SOURCE_BYTES=2*1024*1024;
+    const TAGS=new Set(['svg','g','defs','path','rect','circle','ellipse','line','polyline','polygon','linearGradient','radialGradient','stop','clipPath','mask','pattern','use','symbol','text','tspan','textPath','title','desc']);
+    const ATTRS=new Set(['id','viewBox','width','height','x','y','x1','x2','y1','y2','cx','cy','r','rx','ry','d','points','transform','fill','fill-opacity','fill-rule','stroke','stroke-width','stroke-opacity','stroke-linecap','stroke-linejoin','stroke-miterlimit','stroke-dasharray','stroke-dashoffset','opacity','color','clip-path','clip-rule','mask','maskUnits','maskContentUnits','gradientUnits','gradientTransform','spreadMethod','offset','stop-color','stop-opacity','patternUnits','patternContentUnits','patternTransform','preserveAspectRatio','vector-effect','font-family','font-size','font-weight','letter-spacing','text-anchor','dominant-baseline','role','aria-label','aria-hidden','focusable','href']);
+    const STYLE_ATTRS=new Set(['fill','fill-opacity','fill-rule','stroke','stroke-width','stroke-opacity','stroke-linecap','stroke-linejoin','stroke-miterlimit','stroke-dasharray','stroke-dashoffset','opacity','color','clip-path','mask','stop-color','stop-opacity','font-family','font-size','font-weight','letter-spacing','text-anchor']);
+    const textBytes=value=>new TextEncoder().encode(value).length;
+    const $=id=>document.getElementById(id);
+    function safeAttribute(name,value){
+      if(!ATTRS.has(name)) return null;
+      const normalized=value.trim().replace(/[\t\r\n]+/g,' ');
+      if(name==='href') return /^#[A-Za-z_][\w:.-]*$/.test(normalized)?normalized:null;
+      if(name==='id') return /^[A-Za-z_][\w:.-]*$/.test(normalized)?normalized:null;
+      if(/(?:javascript|data|https?|file):/i.test(normalized)||/[<>]/.test(normalized)||/@import|expression\s*\(/i.test(normalized)) return null;
+      if(/url\s*\(/i.test(normalized)&&!/^url\(#[-\w:.]+\)$/i.test(normalized)) return null;
+      return normalized;
+    }
+    function getDimensions(root){
+      const view=(root.getAttribute('viewBox')||'').trim().split(/[\s,]+/).map(Number);
+      const viewWidth=view.length===4&&Number.isFinite(view[2])&&view[2]>0?view[2]:null;
+      const viewHeight=view.length===4&&Number.isFinite(view[3])&&view[3]>0?view[3]:null;
+      const px=value=>/^\d+(?:\.\d+)?(?:px)?$/i.test(value||'')?Number.parseFloat(value):null;
+      let width=px(root.getAttribute('width')),height=px(root.getAttribute('height'));
+      if(!width) width=viewWidth||512;
+      if(!height) height=viewHeight?width*viewHeight/(viewWidth||viewHeight):width;
+      if(!Number.isFinite(width)||!Number.isFinite(height)||width<=0||height<=0) throw new Error('SVG dimensions must be positive numbers.');
+      return {width,height};
+    }
+    function sanitizeSvg(source){
+      if(textBytes(source)>MAX_SOURCE_BYTES) throw new Error('SVG is larger than the 2 MB browser limit.');
+      if(/<!DOCTYPE|<!ENTITY/i.test(source)) throw new Error('DOCTYPE and entity declarations are not supported.');
+      const sourceDoc=new DOMParser().parseFromString(source,'image/svg+xml');
+      if(sourceDoc.querySelector('parsererror')) throw new Error('SVG XML is malformed. Check tags, quotes, and entities.');
+      const original=sourceDoc.documentElement;
+      if(!original||original.localName!=='svg'||(original.namespaceURI&&original.namespaceURI!==SVG_NS)) throw new Error('The root element must be an SVG.');
+      const targetDoc=document.implementation.createDocument(SVG_NS,'svg',null);
+      const target=targetDoc.documentElement;
+      const stats={elements:0,attributes:0};
+      function copyAttributes(from,to){
+        let inlineStyle='';
+        for(const attribute of from.attributes){
+          if(attribute.name==='xmlns'||attribute.name==='xmlns:xlink') continue;
+          if(attribute.name==='style'){inlineStyle=attribute.value;continue}
+          const name=attribute.localName==='href'?'href':attribute.name;
+          const value=safeAttribute(name,attribute.value);
+          if(value===null){stats.attributes++;continue}
+          to.setAttribute(name,value);
+        }
+        if(inlineStyle) for(const declaration of inlineStyle.split(';')){
+          if(!declaration.trim()) continue;
+          const colon=declaration.indexOf(':');
+          if(colon<1){stats.attributes++;continue}
+          const name=declaration.slice(0,colon).trim().toLowerCase();
+          const value=declaration.slice(colon+1).trim();
+          const safe=STYLE_ATTRS.has(name)?safeAttribute(name,value):null;
+          if(safe===null||/!important/i.test(safe)){stats.attributes++;continue}
+          to.setAttribute(name,safe);
+        }
+      }
+      function copyChildren(from,to){
+        for(const child of from.childNodes){
+          if(child.nodeType===Node.ELEMENT_NODE){
+            const tag=child.localName;
+            if(!TAGS.has(tag)||child.namespaceURI&&child.namespaceURI!==SVG_NS){stats.elements++;continue}
+            const next=targetDoc.createElementNS(SVG_NS,tag);
+            copyAttributes(child,next);
+            copyChildren(child,next);
+            if(['g','defs','clipPath','mask','pattern','linearGradient','radialGradient','symbol'].includes(tag)&&!next.hasChildNodes()){stats.elements++;continue}
+            to.appendChild(next);
+          }else if(child.nodeType===Node.TEXT_NODE&&['text','tspan','textPath','title','desc'].includes(to.localName)){
+            to.appendChild(targetDoc.createTextNode(child.nodeValue));
+          }
+        }
+      }
+      copyAttributes(original,target);
+      copyChildren(original,target);
+      const dimensions=getDimensions(target);
+      const clean=new XMLSerializer().serializeToString(target);
+      return {svg:clean,dimensions,removedElements:stats.elements,removedAttributes:stats.attributes};
+    }
+    function jsxAttributeName(name){
+      if(name==='class') return 'className';
+      if(name==='for') return 'htmlFor';
+      if(name.startsWith('aria-')||name.startsWith('data-')) return name;
+      return name.replace(/[:-]([a-z])/g,(_,letter)=>letter.toUpperCase());
+    }
+    function escapeJsxAttribute(value){return value.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+    function toJsx(svg,typescript){
+      const doc=new DOMParser().parseFromString(svg,'image/svg+xml');
+      function nodeCode(node,depth){
+        const indent='  '.repeat(depth);
+        if(node.nodeType===Node.TEXT_NODE) return indent+'{'+JSON.stringify(node.nodeValue)+'}';
+        const tag=node.localName;
+        const attrs=[...node.attributes].filter(attr=>attr.name!=='xmlns').map(attr=>' '+jsxAttributeName(attr.name)+'="'+escapeJsxAttribute(attr.value)+'"').join('');
+        const spread=depth===2?' {...props}':'';
+        const children=[...node.childNodes].filter(child=>child.nodeType===Node.ELEMENT_NODE||child.nodeType===Node.TEXT_NODE&&child.nodeValue.trim());
+        if(!children.length) return indent+'<'+tag+attrs+spread+' />';
+        return indent+'<'+tag+attrs+spread+'>\n'+children.map(child=>nodeCode(child,depth+1)).join('\n')+'\n'+indent+'</'+tag+'>';
+      }
+      const intro=typescript?"import type * as React from 'react';\n\nexport default function Icon(props: React.SVGProps<SVGSVGElement>) {\n":"export default function Icon(props) {\n";
+      return intro+'  return (\n'+nodeCode(doc.documentElement,2)+'\n  );\n}';
+    }
+    function toCss(svg){return "background-image: url('data:image/svg+xml;utf8,"+encodeURIComponent(svg)+"');\nbackground-repeat: no-repeat;\nbackground-size: contain;"}
+    function renderableSvg(svg,dimensions){
+      const doc=new DOMParser().parseFromString(svg,'image/svg+xml'),root=doc.documentElement;
+      if(!/^\d+(?:\.\d+)?(?:px)?$/i.test(root.getAttribute('width')||'')) root.setAttribute('width',String(dimensions.width));
+      if(!/^\d+(?:\.\d+)?(?:px)?$/i.test(root.getAttribute('height')||'')) root.setAttribute('height',String(dimensions.height));
+      return new XMLSerializer().serializeToString(root);
+    }
+    function formatBytes(bytes){return bytes<1024?bytes+' B':bytes<1048576?(bytes/1024).toFixed(1)+' KB':(bytes/1048576).toFixed(2)+' MB'}
+    const SAMPLE_ICON=[
+      '<?xml version="1.0" encoding="UTF-8"?>',
+      '<!-- Vector orbit icon with decorative editor metadata -->',
+      '<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" role="img" aria-label="Orbit icon">',
+      '<metadata>Created for the CleanSVG demo</metadata>',
+      '<defs><linearGradient id="aurora" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#f58ccf"/></linearGradient><clipPath id="round"><circle cx="120" cy="120" r="98"/></clipPath></defs>',
+      '<g clip-path="url(#round)"><rect width="240" height="240" rx="52" fill="#17172c"/><circle cx="120" cy="120" r="68" fill="none" stroke="url(#aurora)" stroke-width="17"/><path d="M58 159c33-27 76-31 124-68" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round"/><circle cx="173" cy="93" r="19" fill="#f8b4df"/><circle cx="73" cy="159" r="10" fill="#a896ff"/></g>',
+      '</svg>'
+    ].join('\n');
+    const SAMPLE_LOGO=[
+      '<svg xmlns="http://www.w3.org/2000/svg" width="320" height="180" viewBox="0 0 320 180" aria-label="Nova logo">',
+      '<!-- Simple brand mark -->',
+      '<defs><linearGradient id="logo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8a7bff"/><stop offset="1" stop-color="#f29bd2"/></linearGradient></defs>',
+      '<rect width="320" height="180" rx="32" fill="#121625"/>',
+      '<path d="M62 123V57h18l33 40V57h17v66h-17L79 82v41z" fill="url(#logo)"/>',
+      '<path d="M149 121l28-64h18l29 64h-19l-5-13h-29l-5 13zm28-27h18l-9-22z" fill="#fff"/>',
+      '<circle cx="255" cy="90" r="31" fill="none" stroke="#e6a4ef" stroke-width="12"/>',
+      '</svg>'
+    ].join('\n');
+    let current=null,previewUrl=null,processTimer,toastTimer,activeTab='jsx',typescript=false,pngScale='2',pngBackground='transparent',customWidth='1200',fileName='clean-svg';
+    function toast(message){const node=$('toast');node.textContent=message;node.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>node.classList.remove('show'),3200)}
+    function clearPreview(){if(previewUrl){URL.revokeObjectURL(previewUrl);previewUrl=null}$('previewImage').hidden=true;$('previewImage').removeAttribute('src');$('previewEmpty').hidden=false}
+    function showPreview(svg,dimensions){
+      clearPreview();
+      previewUrl=URL.createObjectURL(new Blob([renderableSvg(svg,dimensions)],{type:'image/svg+xml'}));
+      const image=$('previewImage');
+      image.onload=()=>{image.hidden=false;$('previewEmpty').hidden=true};
+      image.onerror=()=>{$('previewEmpty').textContent='The browser could not render this SVG.';clearPreview()};
+      image.src=previewUrl;
+    }
+    function updateMetrics(rawBytes=0,cleanBytes=0){
+      $('originalSize').textContent=formatBytes(rawBytes);
+      $('cleanSize').textContent=formatBytes(cleanBytes);
+      if(!rawBytes||!cleanBytes){$('savedSize').textContent='—';return}
+      const difference=(rawBytes-cleanBytes)/rawBytes*100;
+      $('savedSize').textContent=(difference>=0?'-':'+')+Math.abs(difference).toFixed(1)+'%';
+      $('savedSize').style.color=difference>=0?'#a4efc6':'#ffd0a1';
+    }
+    function setStatus(message,kind=''){const node=$('sourceStatus');node.textContent=message;node.className='status-line'+(kind?' '+kind:'')}
+    function processSource(){
+      const raw=$('svgInput').value;
+      if(!raw.trim()){current=null;clearPreview();$('previewEmpty').textContent='Your cleaned SVG will appear here.';updateMetrics();setStatus('Load a sample or paste an SVG to begin.');renderOutput();return}
+      try{
+        const result=sanitizeSvg(raw);
+        current={...result,rawBytes:textBytes(raw),cleanBytes:textBytes(result.svg)};
+        updateMetrics(current.rawBytes,current.cleanBytes);
+        showPreview(result.svg,result.dimensions);
+        const removed=result.removedElements+result.removedAttributes;
+        setStatus(removed?'Ready · Removed '+result.removedElements+' unsupported element(s) and '+result.removedAttributes+' attribute(s). Compare the preview.':'Ready · SVG parsed and cleaned successfully.',removed?'warn':'');
+      }catch(error){
+        current=null;clearPreview();updateMetrics(textBytes(raw),0);setStatus(error.message,'error');
+      }
+      renderOutput();
+    }
+    function scheduleProcess(){clearTimeout(processTimer);processTimer=setTimeout(processSource,90)}
+    function selectTab(tab){activeTab=tab;document.querySelectorAll('[data-tab]').forEach(button=>{const active=button.dataset.tab===tab;button.classList.toggle('active',active);button.setAttribute('aria-selected',String(active))});renderOutput()}
+    function computedPngDimensions(){
+      if(!current) return null;
+      const base=current.dimensions;
+      const width=pngScale==='custom'?Number(customWidth):Math.round(base.width*Number(pngScale));
+      const height=Math.round(width*base.height/base.width);
+      if(!Number.isInteger(width)||width<1||!Number.isInteger(height)||height<1) return {error:'Enter a positive pixel width.'};
+      if(width>8192||height>8192||width*height>32000000) return {error:'Output exceeds 8192 px per side or 32 million pixels.'};
+      return {width,height};
+    }
+    function renderOutput(){
+      const panel=$('outputPanel'),ready=!!current;
+      if(activeTab==='jsx'){
+        panel.innerHTML='<div class="output-toolbar"><div><h3>React component</h3><p>Cleaned SVG with React-friendly attribute names.</p></div><label class="switch"><input id="typescriptToggle" type="checkbox"'+(typescript?' checked':'')+'> TypeScript</label></div><pre class="code-output" id="outputCode"></pre><div class="output-actions"><button class="btn btn-primary" type="button" id="copyOutput"'+(ready?'':' disabled')+'><svg><use href="#i-copy"/></svg> Copy component</button></div>';
+        $('typescriptToggle').addEventListener('change',event=>{typescript=event.target.checked;renderOutput()});
+        $('outputCode').textContent=ready?toJsx(current.svg,typescript):'Load a valid SVG to generate a React component.';
+      }else if(activeTab==='css'){
+        panel.innerHTML='<div class="output-toolbar"><div><h3>CSS data URI</h3><p>A percent-encoded, inline background image declaration.</p></div></div><pre class="code-output" id="outputCode"></pre><div class="output-actions"><button class="btn btn-primary" type="button" id="copyOutput"'+(ready?'':' disabled')+'><svg><use href="#i-copy"/></svg> Copy CSS</button></div>';
+        $('outputCode').textContent=ready?toCss(current.svg):'Load a valid SVG to generate a CSS data URI.';
+      }else if(activeTab==='svg'){
+        panel.innerHTML='<div class="output-toolbar"><div><h3>Clean SVG</h3><p>Sanitized, compact vector markup ready to save.</p></div></div><pre class="code-output" id="outputCode"></pre><div class="output-actions"><button class="btn btn-primary" type="button" id="copyOutput"'+(ready?'':' disabled')+'><svg><use href="#i-copy"/></svg> Copy SVG</button><button class="btn" type="button" id="downloadSvg"'+(ready?'':' disabled')+'><svg><use href="#i-download"/></svg> Download .svg</button></div>';
+        $('outputCode').textContent=ready?current.svg:'Load a valid SVG to see its cleaned markup.';
+        $('downloadSvg').addEventListener('click',()=>downloadBlob(new Blob([current.svg],{type:'image/svg+xml;charset=utf-8'}),fileName+'.svg'));
+      }else{
+        const scales=[['1','1× Original'],['2','2× Retina'],['4','4× High-res'],['custom','Custom']];
+        const backgrounds=[['transparent','Transparent'],['white','White'],['black','Black']];
+        const choice=(name,value,label,checked)=>'<label class="radio-chip"><input type="radio" name="'+name+'" value="'+value+'"'+(checked?' checked':'')+'><span>'+label+'</span></label>';
+        panel.innerHTML='<div class="output-toolbar"><div><h3>High-resolution PNG</h3><p>Rasterize the cleaned vector in your browser.</p></div></div><div class="png-options"><div><h4>SIZE</h4><div class="radio-row">'+scales.map(item=>choice('pngScale',item[0],item[1],pngScale===item[0])).join('')+'</div><label class="custom-width">Custom width <input id="customWidth" type="number" min="1" max="8192" value="'+customWidth+'"'+(pngScale==='custom'?'':' disabled')+'> px</label></div><div><h4>BACKGROUND</h4><div class="radio-row">'+backgrounds.map(item=>choice('pngBackground',item[0],item[1],pngBackground===item[0])).join('')+'</div></div></div><p class="png-dimensions" id="pngDimensions"></p><div class="output-actions"><button class="btn btn-primary" type="button" id="downloadPng"'+(ready?'':' disabled')+'><svg><use href="#i-download"/></svg> Download PNG</button></div><p class="output-hint">Large canvases are limited to protect your browser’s memory.</p>';
+        panel.querySelectorAll('[name="pngScale"]').forEach(input=>input.addEventListener('change',event=>{pngScale=event.target.value;renderOutput()}));
+        panel.querySelectorAll('[name="pngBackground"]').forEach(input=>input.addEventListener('change',event=>{pngBackground=event.target.value;renderOutput()}));
+        $('customWidth').addEventListener('input',event=>{customWidth=event.target.value;renderPngDimensions()});
+        $('downloadPng').addEventListener('click',downloadPng);
+        renderPngDimensions();
+      }
+      if($('copyOutput')) $('copyOutput').addEventListener('click',()=>copyText($('outputCode').textContent));
+    }
+    function renderPngDimensions(){const node=$('pngDimensions');if(!node)return;const dimensions=computedPngDimensions();node.textContent=!dimensions?'Load an SVG to see output dimensions.':dimensions.error||'Output: '+dimensions.width+' × '+dimensions.height+' px';node.style.color=dimensions&&dimensions.error?'#ff9fba':'#b5e5d0';$('downloadPng').disabled=!dimensions||!!dimensions.error}
+    async function copyText(value){try{if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(value);else{const field=document.createElement('textarea');field.value=value;field.style.position='fixed';field.style.opacity='0';document.body.append(field);field.select();const success=document.execCommand('copy');field.remove();if(!success)throw new Error('Copy failed')}toast('Copied to clipboard!')}catch{toast('Copy failed. Try a secure browser context.')}}
+    function downloadBlob(blob,name){const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=name;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),30000)}
+    async function downloadPng(){
+      if(!current)return;
+      const dimensions=computedPngDimensions();
+      if(!dimensions||dimensions.error){toast(dimensions?.error||'Load a valid SVG first.');return}
+      const source=URL.createObjectURL(new Blob([renderableSvg(current.svg,current.dimensions)],{type:'image/svg+xml'}));
+      try{
+        const image=new Image();
+        await new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=()=>reject(new Error('SVG could not be rasterized.'));image.src=source});
+        const canvas=document.createElement('canvas');canvas.width=dimensions.width;canvas.height=dimensions.height;
+        const context=canvas.getContext('2d');if(!context)throw new Error('Canvas is unavailable in this browser.');
+        if(pngBackground!=='transparent'){context.fillStyle=pngBackground==='white'?'#ffffff':'#000000';context.fillRect(0,0,canvas.width,canvas.height)}
+        context.drawImage(image,0,0,canvas.width,canvas.height);
+        const blob=await new Promise((resolve,reject)=>canvas.toBlob(value=>value?resolve(value):reject(new Error('PNG encoding failed.')),'image/png'));
+        downloadBlob(blob,fileName+'-'+dimensions.width+'x'+dimensions.height+'.png');
+        toast('PNG download started.');
+      }catch(error){toast(error.message)}finally{URL.revokeObjectURL(source)}
+    }
+    async function loadFile(file){
+      if(!file)return;
+      if(!/\.svg$/i.test(file.name)&&file.type!=='image/svg+xml'){toast('Choose an .svg file.');return}
+      if(file.size>MAX_SOURCE_BYTES){toast('SVG file must be 2 MB or smaller.');return}
+      fileName=(file.name.replace(/\.svg$/i,'').replace(/[^a-z0-9_-]+/gi,'-').slice(0,60)||'clean-svg');
+      $('svgInput').value=await file.text();
+      processSource();
+    }
+    $('svgInput').addEventListener('input',scheduleProcess);
+    $('sampleIcon').addEventListener('click',()=>{fileName='orbit-icon';$('svgInput').value=SAMPLE_ICON;processSource()});
+    $('sampleLogo').addEventListener('click',()=>{fileName='nova-logo';$('svgInput').value=SAMPLE_LOGO;processSource()});
+    $('clearBtn').addEventListener('click',()=>{clearTimeout(processTimer);$('svgInput').value='';$('fileInput').value='';fileName='clean-svg';processSource();$('svgInput').focus()});
+    $('browseBtn').addEventListener('click',()=>$('fileInput').click());
+    $('fileInput').addEventListener('change',event=>loadFile(event.target.files[0]));
+    const dropZone=$('dropZone');
+    ['dragenter','dragover'].forEach(type=>dropZone.addEventListener(type,event=>{event.preventDefault();dropZone.classList.add('dragover')}));
+    ['dragleave','drop'].forEach(type=>dropZone.addEventListener(type,event=>{event.preventDefault();dropZone.classList.remove('dragover')}));
+    dropZone.addEventListener('drop',event=>loadFile(event.dataTransfer.files[0]));
+    document.querySelectorAll('[data-background]').forEach(button=>button.addEventListener('click',()=>{const background=button.dataset.background;$('previewStage').className='preview-stage'+(background==='checker'?'':' '+background);document.querySelectorAll('[data-background]').forEach(item=>{const active=item===button;item.classList.toggle('active',active);item.setAttribute('aria-pressed',String(active))})}));
+    $('zoomSelect').addEventListener('change',event=>$('previewImage').style.width=(60*Number(event.target.value)/100)+'%');
+    document.querySelectorAll('[data-tab]').forEach(button=>button.addEventListener('click',()=>selectTab(button.dataset.tab)));
+    $('outputTabs').addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const tabs=['jsx','css','png','svg'],index=tabs.indexOf(activeTab);const next=event.key==='Home'?0:event.key==='End'?3:(index+(event.key==='ArrowRight'?1:3))%4;selectTab(tabs[next]);$('outputTabs').querySelector('[data-tab="'+tabs[next]+'"]').focus()});
+    $('svgInput').value=SAMPLE_ICON;processSource();</script></body></html>
