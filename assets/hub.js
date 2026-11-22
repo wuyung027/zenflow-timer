@@ -1,0 +1,1 @@
+(()=>{const b=document.querySelector('.zf-nav-toggle'),n=document.getElementById('zfNav');if(b&&n)b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',String(o))})})();
