@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://zenflow-timer.vercel.app/</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
+<url><loc>https://zenflow-timer.vercel.app/</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/tools</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/tools/pomodoro</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/tools/password-generator</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/tools/word-counter</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/tools/text-diff</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/tools/dev-units</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/tools/markdown-converter</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/tools/json-formatter</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/tools/og-preview</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/tools/cron-builder</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/tools/svg-optimizer</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/guides</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/guides/pomodoro-focus-science</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/guides/developer-workflow-privacy</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/guides/ambient-sound-productivity</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/about</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/privacy</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/terms</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/contact</loc><lastmod>2026-11-22</lastmod></url>
 </urlset>
