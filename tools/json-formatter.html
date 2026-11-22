@@ -1,0 +1,640 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JSON Formatter &amp; TypeScript Generator | ZenFlow Tools</title><meta name="description" content="Format, validate, minify, search, and convert JSON into TypeScript interfaces entirely in your browser. Free, private, and designed to run in your browser."><link rel="canonical" href="https://zenflow-timer.vercel.app/tools/json-formatter"><meta property="og:type" content="website"><meta property="og:site_name" content="ZenFlow Tools"><meta property="og:title" content="JSON Formatter &amp; TypeScript Generator | ZenFlow Tools"><meta property="og:description" content="Format, validate, minify, search, and convert JSON into TypeScript interfaces entirely in your browser. Free, private, and designed to run in your browser."><meta property="og:url" content="https://zenflow-timer.vercel.app/tools/json-formatter"><meta name="twitter:card" content="summary"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3686574001707459" crossorigin="anonymous"></script><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"JSON Formatter & TypeScript Generator","url":"https://zenflow-timer.vercel.app/tools/json-formatter","description":"Format, validate, minify, search, and convert JSON into TypeScript interfaces entirely in your browser.","applicationCategory":"DeveloperApplication","operatingSystem":"Any modern web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"isAccessibleForFree":true},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://zenflow-timer.vercel.app/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://zenflow-timer.vercel.app/tools"},{"@type":"ListItem","position":3,"name":"JSON Formatter & TypeScript Generator","item":"https://zenflow-timer.vercel.app/tools/json-formatter"}]}]}</script><style>
+    :root {
+      color-scheme: dark;
+      --bg: #090a0f;
+      --panel: rgba(16, 18, 28, .82);
+      --panel-solid: #10121c;
+      --panel-raised: #151825;
+      --line: rgba(255, 255, 255, .085);
+      --line-strong: rgba(139, 92, 246, .32);
+      --text: #f4f3ff;
+      --muted: #969aaf;
+      --muted-2: #656a80;
+      --violet: #8b5cf6;
+      --indigo: #6366f1;
+      --cyan: #67e8f9;
+      --green: #4ade80;
+      --red: #fb7185;
+      --amber: #fbbf24;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow: 0 24px 80px rgba(0, 0, 0, .42);
+      --font-ui: "Plus Jakarta Sans", system-ui, sans-serif;
+      --font-code: "JetBrains Mono", ui-monospace, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(900px 430px at 50% -90px, rgba(99, 102, 241, .22), transparent 68%),
+        radial-gradient(600px 400px at 90% 22%, rgba(139, 92, 246, .08), transparent 70%),
+        var(--bg);
+      color: var(--text);
+      font-family: var(--font-ui);
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .025;
+      background-image: linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 75%);
+    }
+    button, textarea { font: inherit; }
+    button { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    .skip-link { position: fixed; left: 16px; top: -60px; z-index: 100; padding: 10px 14px; background: white; color: #111; border-radius: 8px; }
+    .skip-link:focus { top: 12px; }
+    .shell { width: min(1440px, calc(100% - 40px)); margin: 0 auto; }
+
+    .site-header { padding: 28px 0 24px; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-weight: 800; letter-spacing: -.04em; font-size: 20px; }
+    .brand-mark { position: relative; width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.14); border-radius: 10px; background: linear-gradient(145deg, rgba(139,92,246,.35), rgba(99,102,241,.08)); box-shadow: inset 0 1px rgba(255,255,255,.14), 0 8px 30px rgba(99,102,241,.18); font: 700 15px var(--font-code); }
+    .brand-mark::after { content: ""; position: absolute; inset: -1px; border-radius: inherit; background: linear-gradient(135deg, rgba(255,255,255,.3), transparent 45%); mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude; padding: 1px; }
+    .nav-meta { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 14px var(--green); }
+
+    .hero { padding: 48px 0 36px; text-align: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 11px; border: 1px solid rgba(139,92,246,.24); border-radius: 999px; background: rgba(139,92,246,.07); color: #c4b5fd; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .hero h1 { max-width: 930px; margin: 22px auto 14px; font-size: clamp(38px, 6vw, 72px); line-height: 1.03; letter-spacing: -.06em; }
+    .gradient-text { color: transparent; background: linear-gradient(100deg, #fff 20%, #c4b5fd 55%, #818cf8 85%); background-clip: text; -webkit-background-clip: text; }
+    .hero .subtitle { max-width: 680px; margin: 0 auto; color: var(--muted); font-size: clamp(15px, 2vw, 18px); line-height: 1.7; }
+    .privacy-badge { display: inline-flex; align-items: center; gap: 9px; margin-top: 22px; padding: 9px 13px; border: 1px solid rgba(74,222,128,.16); border-radius: 9px; background: rgba(74,222,128,.05); color: #bbf7d0; font-size: 12px; font-weight: 600; }
+    .privacy-badge svg { width: 14px; color: var(--green); }
+
+    .workspace-wrap { position: relative; margin-top: 26px; }
+    .workspace-wrap::before { content: ""; position: absolute; z-index: -1; inset: -40px 8% auto; height: 180px; background: rgba(99,102,241,.22); filter: blur(90px); }
+    .workspace { overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; min-height: 650px; border: 1px solid var(--line-strong); border-radius: var(--radius-lg); background: rgba(9,10,15,.72); box-shadow: var(--shadow), inset 0 1px rgba(255,255,255,.04); backdrop-filter: blur(18px); }
+    .pane { min-width: 0; display: flex; flex-direction: column; }
+    .pane + .pane { border-left: 1px solid var(--line); }
+    .pane-head { min-height: 58px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.018); }
+    .pane-title { display: flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .pane-kicker { color: var(--muted-2); font: 500 10px var(--font-code); text-transform: uppercase; letter-spacing: .1em; }
+    .actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .btn { min-height: 32px; padding: 7px 10px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.025); color: #d6d7e2; font-size: 11px; font-weight: 600; cursor: pointer; transition: border-color .18s, background .18s, transform .18s, color .18s; }
+    .btn:hover { border-color: rgba(139,92,246,.35); background: rgba(139,92,246,.09); color: white; }
+    .btn:active { transform: translateY(1px); }
+    .btn:focus-visible, .tab:focus-visible, .footer-link:focus-visible, .modal-close:focus-visible { outline: 2px solid #a78bfa; outline-offset: 2px; }
+    .btn-primary { border-color: rgba(139,92,246,.38); background: linear-gradient(135deg, rgba(139,92,246,.24), rgba(99,102,241,.17)); color: #ede9fe; }
+    .btn-danger:hover { border-color: rgba(251,113,133,.3); background: rgba(251,113,133,.08); color: #fecdd3; }
+    .icon { width: 14px; height: 14px; flex: 0 0 auto; }
+
+    .editor-shell { position: relative; flex: 1; min-height: 520px; display: grid; grid-template-columns: 47px minmax(0, 1fr); background: #0b0d14; }
+    .line-numbers { overflow: hidden; padding: 20px 10px 20px 0; text-align: right; user-select: none; color: #3f4355; border-right: 1px solid rgba(255,255,255,.04); font: 400 12px/1.72 var(--font-code); white-space: pre; }
+    #jsonInput { width: 100%; min-height: 100%; resize: none; border: 0; outline: 0; padding: 20px; background: transparent; color: #d9dcf1; caret-color: #a78bfa; tab-size: 2; font: 400 13px/1.72 var(--font-code); white-space: pre; overflow: auto; }
+    #jsonInput::placeholder { color: #4e5368; }
+    .pane-status { min-height: 42px; padding: 0 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); background: rgba(255,255,255,.018); color: var(--muted-2); font: 500 10px var(--font-code); }
+    .validity { max-width: 72%; display: inline-flex; align-items: center; gap: 7px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .validity::before { content: ""; width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto; background: var(--muted-2); }
+    .validity.valid { color: var(--green); }
+    .validity.valid::before { background: var(--green); box-shadow: 0 0 10px rgba(74,222,128,.55); }
+    .validity.invalid { color: var(--red); }
+    .validity.invalid::before { background: var(--red); box-shadow: 0 0 10px rgba(251,113,133,.45); }
+    .counts { white-space: nowrap; }
+
+    .output-head { padding: 0; align-items: stretch; }
+    .tabs { display: flex; min-width: 0; }
+    .tab { position: relative; border: 0; padding: 0 16px; background: transparent; color: var(--muted); font-size: 11px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+    .tab::after { content: ""; position: absolute; left: 16px; right: 16px; bottom: -1px; height: 2px; border-radius: 2px; background: transparent; }
+    .tab[aria-selected="true"] { color: #e9e7ff; }
+    .tab[aria-selected="true"]::after { background: linear-gradient(90deg, var(--violet), var(--indigo)); box-shadow: 0 -2px 12px rgba(139,92,246,.5); }
+    .output-actions { padding: 0 14px; display: flex; align-items: center; gap: 6px; }
+    .code-view { flex: 1; min-height: 520px; margin: 0; overflow: auto; padding: 20px 22px; background: #0b0d14; color: #d9dcf1; tab-size: 2; font: 400 13px/1.72 var(--font-code); white-space: pre; }
+    .code-view .key { color: #c4b5fd; }
+    .code-view .string { color: #86efac; }
+    .code-view .number { color: #fbbf24; }
+    .code-view .boolean { color: #67e8f9; }
+    .code-view .null { color: #fb7185; }
+    .code-view .keyword { color: #c084fc; }
+    .code-view .type { color: #67e8f9; }
+    .code-view .property { color: #a5b4fc; }
+    .code-view .punctuation { color: #74798f; }
+    .empty-output { color: #4e5368; }
+
+    .trust-row { margin: 18px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .trust-item { padding: 14px 16px; display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: 11px; background: rgba(255,255,255,.018); color: var(--muted); font-size: 11px; }
+    .trust-item svg { width: 16px; color: #a78bfa; }
+    .trust-item strong { color: #e5e7f1; font-weight: 700; }
+
+    .content-guide { width: min(940px, calc(100% - 40px)); margin: 126px auto 0; padding-bottom: 80px; }
+    .article-label { color: #a78bfa; font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .content-guide h2 { margin: 14px 0 18px; font-size: clamp(30px, 4vw, 48px); line-height: 1.12; letter-spacing: -.045em; }
+    .article-lede { margin: 0 0 54px; max-width: 780px; color: #b1b4c4; font-size: 17px; line-height: 1.8; }
+    .article-grid { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 54px; align-items: start; }
+    .toc { position: sticky; top: 24px; padding: 17px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.02); }
+    .toc-title { margin-bottom: 12px; color: var(--muted-2); font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .toc a { display: block; padding: 7px 0; color: var(--muted); text-decoration: none; font-size: 11px; line-height: 1.45; transition: color .2s; }
+    .toc a:hover { color: #c4b5fd; }
+    .article-body h3 { scroll-margin-top: 28px; margin: 52px 0 14px; font-size: 23px; letter-spacing: -.025em; }
+    .article-body h3:first-child { margin-top: 0; }
+    .article-body p, .article-body li { color: #aeb1c1; font-size: 15px; line-height: 1.9; }
+    .article-body p { margin: 0 0 18px; }
+    .article-body strong { color: #e6e6f0; }
+    .article-body code { padding: 2px 5px; border: 1px solid var(--line); border-radius: 5px; background: rgba(255,255,255,.035); color: #c4b5fd; font: 500 .86em var(--font-code); }
+    .article-body ul { padding-left: 20px; }
+    .article-body li { padding-left: 5px; margin-bottom: 8px; }
+    .callout { margin: 28px 0; padding: 20px 22px; border: 1px solid rgba(139,92,246,.22); border-radius: 12px; background: linear-gradient(135deg, rgba(139,92,246,.08), rgba(99,102,241,.025)); }
+    .callout strong { display: block; margin-bottom: 7px; color: #c4b5fd; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+    .callout p { margin: 0; font-size: 13px; }
+    .faq-item { border-top: 1px solid var(--line); padding: 22px 0 6px; }
+    .faq-item h4 { margin: 0 0 9px; font-size: 15px; color: #e7e6f2; }
+
+    .site-footer { border-top: 1px solid var(--line); background: rgba(0,0,0,.14); }
+    .footer-inner { min-height: 126px; padding: 30px 0; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .footer-brand { color: var(--muted); font-size: 11px; line-height: 1.7; }
+    .footer-brand strong { color: #dedee9; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+    .footer-link { border: 0; padding: 5px 0; background: none; color: var(--muted); font-size: 11px; cursor: pointer; }
+    .footer-link:hover { color: #c4b5fd; }
+
+    .modal-backdrop { position: fixed; z-index: 50; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(3,4,8,.76); backdrop-filter: blur(10px); opacity: 0; visibility: hidden; transition: opacity .2s, visibility .2s; }
+    .modal-backdrop.open { opacity: 1; visibility: visible; }
+    .modal { width: min(650px, 100%); max-height: min(78vh, 760px); overflow: auto; border: 1px solid rgba(139,92,246,.28); border-radius: 16px; background: #11131d; box-shadow: 0 32px 100px rgba(0,0,0,.58); transform: translateY(10px) scale(.985); transition: transform .2s; }
+    .modal-backdrop.open .modal { transform: none; }
+    .modal-head { position: sticky; top: 0; padding: 19px 22px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); background: rgba(17,19,29,.94); backdrop-filter: blur(14px); }
+    .modal-title { margin: 0; font-size: 17px; }
+    .modal-close { width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.03); color: var(--muted); font-size: 20px; cursor: pointer; }
+    .modal-content { padding: 24px 22px 30px; color: #aeb1c1; font-size: 13px; line-height: 1.8; }
+    .modal-content h3 { margin: 24px 0 6px; color: #ecebf5; font-size: 14px; }
+    .modal-content h3:first-child { margin-top: 0; }
+    .modal-content p { margin: 0 0 13px; }
+    .modal-content a { color: #c4b5fd; }
+    .modal-meta { color: var(--muted-2); font-size: 11px; }
+
+    .toast { position: fixed; z-index: 80; left: 50%; bottom: 24px; display: flex; align-items: center; gap: 9px; padding: 11px 15px; border: 1px solid rgba(74,222,128,.22); border-radius: 10px; background: rgba(17,24,22,.96); color: #d1fae5; box-shadow: 0 14px 44px rgba(0,0,0,.4); font-size: 12px; font-weight: 700; opacity: 0; transform: translate(-50%, 12px); pointer-events: none; transition: opacity .2s, transform .2s; }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 1050px) {
+      .workspace { grid-template-columns: 1fr; }
+      .pane + .pane { border-left: 0; border-top: 1px solid var(--line); }
+      .editor-shell, .code-view { min-height: 430px; }
+      .output-head { min-height: 64px; }
+    }
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 24px, 1440px); }
+      .site-header { padding-top: 18px; }
+      .nav-meta { display: none; }
+      .hero { padding-top: 34px; }
+      .hero h1 { font-size: 40px; }
+      .privacy-badge { max-width: 100%; line-height: 1.5; text-align: left; }
+      .pane-head { padding: 12px; min-height: auto; align-items: flex-start; flex-direction: column; }
+      .actions { justify-content: flex-start; }
+      .btn { min-height: 36px; }
+      .output-head { padding: 0; flex-direction: row; align-items: stretch; overflow-x: auto; }
+      .tabs { min-height: 58px; }
+      .output-actions { padding: 11px; margin-left: auto; }
+      .output-actions .btn span { display: none; }
+      .tab { padding: 0 12px; }
+      .tab::after { left: 12px; right: 12px; }
+      .editor-shell { grid-template-columns: 39px minmax(0, 1fr); min-height: 390px; }
+      #jsonInput, .code-view { padding: 16px 14px; font-size: 12px; }
+      .line-numbers { padding-top: 16px; font-size: 11px; }
+      .trust-row { grid-template-columns: 1fr; }
+      .content-guide { width: min(100% - 32px, 940px); margin-top: 88px; }
+      .article-grid { grid-template-columns: 1fr; gap: 26px; }
+      .toc { position: static; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 470px) {
+      .hero h1 { font-size: 34px; }
+      .hero .subtitle { font-size: 14px; }
+      .pane-kicker { display: none; }
+      .actions { width: 100%; display: grid; grid-template-columns: 1fr 1fr; }
+      .pane-status { align-items: flex-start; flex-direction: column; padding-block: 10px; }
+      .validity { max-width: 100%; }
+      .tab { font-size: 0; }
+      .tab::before { content: attr(data-short); font-size: 15px; }
+      .output-actions { gap: 4px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style><link rel="stylesheet" href="/assets/styles.css"></head><body><header class="zf-header"><div class="zf-wrap zf-header-inner"><a class="zf-logo" href="/" aria-label="ZenFlow Tools home"><span class="zf-logo-mark" aria-hidden="true">◆</span>ZenFlow <b>Tools</b></a><nav class="zf-nav" id="zfNav" aria-label="Primary"><a href="/">Home</a><a href="/tools" aria-current="page">Tools</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/contact">Contact</a></nav><button class="zf-nav-toggle" type="button" aria-expanded="false" aria-controls="zfNav">Menu</button></div></header><nav class="zf-crumb zf-wrap" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools">Tools</a> <span>/</span> <span aria-current="page">JSON Formatter &amp; TypeScript Generator</span></nav><main id="top">
+    <section class="hero shell" aria-labelledby="hero-title">
+      <div class="eyebrow">Developer utility · Free forever</div>
+      <h1 id="hero-title"><span class="gradient-text">JSON clarity,</span><br>at the speed of thought.</h1>
+      <p class="subtitle">Instant JSON Formatter, Validator &amp; TypeScript Interface Generator.</p>
+      <div class="privacy-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        100% Client-Side: Zero server uploads, privacy-first, offline-ready.
+      </div>
+    </section>
+
+    <section id="workspace" class="shell workspace-wrap" aria-label="JSON formatter workspace">
+      <div class="workspace">
+        <section class="pane" aria-labelledby="input-title">
+          <div class="pane-head">
+            <div>
+              <div id="input-title" class="pane-title"><span aria-hidden="true">{ }</span> JSON Input</div>
+              <div class="pane-kicker">Paste or type below</div>
+            </div>
+            <div class="actions" aria-label="Input actions">
+              <button class="btn btn-primary" id="prettifyBtn" type="button" title="Format with 2 spaces"><span aria-hidden="true">✨</span> Prettify</button>
+              <button class="btn" id="minifyBtn" type="button"><span aria-hidden="true">⚡</span> Minify</button>
+              <button class="btn" id="sampleBtn" type="button"><span aria-hidden="true">📂</span> Sample</button>
+              <button class="btn btn-danger" id="clearBtn" type="button"><span aria-hidden="true">×</span> Clear</button>
+            </div>
+          </div>
+          <div class="editor-shell">
+            <div id="lineNumbers" class="line-numbers" aria-hidden="true">1</div>
+            <textarea id="jsonInput" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="JSON input" placeholder='Paste JSON here…&#10;&#10;{&#10;  "hello": "world"&#10;}'></textarea>
+          </div>
+          <div class="pane-status" aria-live="polite">
+            <span id="validity" class="validity">Waiting for JSON</span>
+            <span id="inputCounts" class="counts">0 chars · 0 bytes</span>
+          </div>
+        </section>
+
+        <section class="pane" aria-labelledby="output-title">
+          <h2 id="output-title" hidden>Formatted and TypeScript output</h2>
+          <div class="pane-head output-head">
+            <div class="tabs" role="tablist" aria-label="Output format">
+              <button class="tab" id="formattedTab" role="tab" aria-selected="true" aria-controls="outputCode" data-short="📐" type="button">📐 Formatted JSON</button>
+              <button class="tab" id="typescriptTab" role="tab" aria-selected="false" aria-controls="outputCode" data-short="⚡" type="button">⚡ TypeScript Interfaces</button>
+            </div>
+            <div class="output-actions">
+              <button class="btn" id="copyBtn" type="button"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy</span></button>
+              <button class="btn" id="downloadBtn" type="button"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v3h16v-3"/></svg><span>Download</span></button>
+            </div>
+          </div>
+          <pre id="outputCode" class="code-view" tabindex="0" aria-live="polite"><span class="empty-output">Valid formatted JSON will appear here.</span></pre>
+          <div class="pane-status">
+            <span id="outputMode">Formatted JSON</span>
+            <span id="outputCounts" class="counts">0 lines · 0 bytes</span>
+          </div>
+        </section>
+      </div>
+
+      <div class="trust-row" aria-label="Privacy details">
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span><strong>Private by design.</strong> Data never leaves this tab.</span></div>
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m13 2-9 11h8l-1 9 9-12h-8z"/></svg><span><strong>Instant output.</strong> Debounced by just 100ms.</span></div>
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9m3-3-3 3 3 3M4 17h9m-3-3 3 3-3 3"/></svg><span><strong>Practical types.</strong> Nested objects and arrays inferred.</span></div>
+      </div>
+    </section>
+
+    <article class="content-guide">
+      <div class="article-label">The developer’s field guide</div>
+      <h2>The Complete Guide to JSON Formatting, Validation, and TypeScript Type Safety</h2>
+      <p class="article-lede">JSON looks simple because its grammar is small, yet it sits on the critical path of nearly every modern web application. Understanding how to format, validate, debug, and type JSON turns an everyday data format into a safer engineering workflow.</p>
+      <div class="article-grid">
+        <nav class="toc" aria-label="Guide contents">
+          <div class="toc-title">In this guide</div>
+          <a href="#json-standard">The JSON standard</a>
+          <a href="#formatting">Formatting vs. minifying</a>
+          <a href="#debugging">Debugging parse errors</a>
+          <a href="#typescript">JSON to TypeScript</a>
+          <a href="#workflow">Production workflow</a>
+          <a href="#faq">Practical FAQ</a>
+        </nav>
+        <div class="article-body">
+          <section id="json-standard">
+            <h3>JSON fundamentals and the standard that matters</h3>
+            <p><strong>JavaScript Object Notation</strong>, better known as JSON, is a text format for representing structured data. It grew from JavaScript syntax but is language-independent: Go, Python, Java, Rust, PHP, Swift, and virtually every other mainstream language can parse it. The core standard is defined by ECMA-404 and RFC 8259. A JSON document contains one value, and that value can be an object, an array, a string, a number, the literal <code>true</code>, the literal <code>false</code>, or <code>null</code>.</p>
+            <p>Objects use curly braces and contain name–value pairs. Every object name must be a double-quoted string, followed by a colon and its value. Commas separate members. Arrays use square brackets and contain an ordered list of values. JSON strings require double quotes; single quotes, template literals, comments, functions, <code>undefined</code>, <code>NaN</code>, and trailing commas are not part of valid JSON, even though some JavaScript environments accept similar syntax.</p>
+            <p>Whitespace may appear between structural tokens and does not change meaning. That makes both a multi-line document and its one-line minified equivalent semantically identical. Unicode text is supported, but control characters inside strings must be escaped. A backslash begins an escape such as <code>\n</code> for a newline, <code>\t</code> for a tab, or <code>\uXXXX</code> for a Unicode code unit. Numbers may include a fractional or exponent component, but leading zeroes and non-finite values are prohibited.</p>
+            <div class="callout"><strong>Privacy note</strong><p>QuickJSON uses the browser’s native parser and performs every transformation locally. Pasted API responses, configuration files, and test fixtures are never submitted to a QuickJSON server.</p></div>
+          </section>
+
+          <section id="formatting">
+            <h3>Formatting, beautifying, and minifying JSON</h3>
+            <p>A formatter parses a JSON string into an in-memory value and serializes it again with predictable indentation. Two spaces is a popular default because it creates readable nesting without making deep data excessively wide. Formatting reveals hierarchy, aligns sibling fields, and makes missing punctuation easier to notice. It is especially useful during API debugging, code review, documentation, and incident response.</p>
+            <p>Minification performs the opposite presentation step. It removes optional whitespace so the same data occupies fewer bytes. Minified JSON is appropriate for network transfer, embedded fixtures, compact logs, and storage where human readability is unnecessary. Modern HTTP compression already removes much of the cost of repeated whitespace, so minification should not replace compression. Treat it as a packaging technique, not as a security measure: anyone receiving the document can format it again.</p>
+            <p>Formatting cannot repair ambiguous or invalid input. A responsible formatter validates first and changes only the representation of a successfully parsed value. This distinction matters because silent “fixers” can alter data or hide defects. QuickJSON therefore reports invalid syntax with a useful message and estimated line number while keeping the original input intact.</p>
+          </section>
+
+          <section id="debugging">
+            <h3>How to debug common JSON parsing errors</h3>
+            <p>Parser messages vary between browsers, but most failures fall into a short list. Start at the reported position, then inspect the token immediately before it. A parser often realizes that something is wrong only after it reaches the next character, so the true cause may be one comma, quote, or bracket earlier.</p>
+            <ul>
+              <li><strong>Unexpected token or character:</strong> look for single-quoted strings, unquoted property names, comments, or a stray symbol copied from surrounding source code.</li>
+              <li><strong>Expected comma or closing brace:</strong> check the previous property or array element. Adjacent values need a comma, while the final member must not have a trailing comma.</li>
+              <li><strong>Unterminated string:</strong> find a missing closing quote or an unescaped quote inside the value. Windows paths also require escaped backslashes.</li>
+              <li><strong>Unexpected end of input:</strong> count opening and closing braces and brackets. A truncated network response commonly produces this symptom.</li>
+              <li><strong>Invalid number:</strong> remove a leading zero, dangling decimal point, hexadecimal notation, or non-finite numeric literal.</li>
+            </ul>
+            <p>When a document is large, reduce the search area systematically. Format the nearest valid subsection, compare bracket pairs, and use the error line as a boundary. If the content came from an HTTP request, verify the response content type and status before assuming the body is JSON. An HTML error page beginning with <code>&lt;</code> is a classic cause of “unexpected token” failures.</p>
+            <p>Encoding can also cause confusing problems. JSON exchanged over the web should use UTF-8. Byte order marks, copied smart quotes, invisible control characters, and incorrectly decoded text can all make visually plausible input fail. Re-copy suspicious keys or strings into a plain-text editor and compare the raw bytes when an error remains elusive.</p>
+          </section>
+
+          <section id="typescript">
+            <h3>From runtime JSON to TypeScript interfaces</h3>
+            <p>JSON carries values at runtime; TypeScript describes shapes during development. Converting a representative JSON payload into interfaces gives editors enough information to autocomplete fields, catch misspelled keys, and flag incompatible assignments before code ships. For an object, each key becomes a property. Strings, numbers, booleans, and null values map to their corresponding TypeScript types, while nested objects become named interfaces and arrays become element-type arrays.</p>
+            <p>QuickJSON walks the parsed value recursively. It creates stable PascalCase names from property paths, protects keys that are not valid TypeScript identifiers by quoting them, and combines different array member shapes into union types. An empty array becomes <code>unknown[]</code> because a single empty sample contains no evidence about its eventual members. A <code>null</code> sample remains <code>null</code>; in real applications you may widen it to a union such as <code>string | null</code> when the API contract permits both.</p>
+            <p>Generated interfaces are a strong starting point, not a replacement for an API schema. One response cannot reveal fields that are optional, distinguish integers from general numbers, or prove that a short list includes every possible variant. If you control the API, treat OpenAPI, JSON Schema, or another versioned contract as the source of truth and generate both validation and types from it. If you do not control it, compare several representative responses and refine the inferred types deliberately.</p>
+            <div class="callout"><strong>Type safety is not runtime validation</strong><p>TypeScript types disappear when code is compiled. Validate untrusted network or user data at runtime before treating it as a generated interface.</p></div>
+            <p>Interface names also communicate domain meaning. Rename generic generated names such as <code>Root</code>, <code>Data</code>, or <code>ItemsItem</code> to terms your team recognizes. Consider readonly properties for immutable API responses, discriminated unions for variants, branded strings for identifiers, and dedicated date types or parsing functions for ISO timestamp strings. The best types document business rules rather than merely mirror a single payload.</p>
+          </section>
+
+          <section id="workflow">
+            <h3>A reliable JSON workflow for production teams</h3>
+            <p>Begin by preserving the raw payload. Validate it without mutation, then format a working copy for inspection. Confirm top-level shape, required identifiers, collection sizes, nullability, and date or enum conventions. Generate an initial TypeScript model, rename it to match the domain, and compare it against additional samples. Add runtime validation at the trust boundary, not deep inside business logic.</p>
+            <p>Keep secrets out of examples and bug reports. Redact authorization tokens, session cookies, email addresses, customer records, and private infrastructure details before sharing JSON. Local client-side tools reduce exposure, but they do not make sensitive data appropriate for public tickets, chat rooms, or repositories. For repeatable tests, build small synthetic fixtures that preserve structural edge cases without copying real user data.</p>
+            <p>In version control, prefer consistently formatted JSON because meaningful changes become easier to review. Automated format checks can prevent whitespace churn. For deployed assets, let your build pipeline minify when size matters. For APIs, send a correct <code>Content-Type: application/json</code> header, choose a documented character encoding, use compression, and establish size limits to protect parsers from unexpectedly large bodies.</p>
+            <p>Finally, remember that duplicate object keys are interoperable but risky. Many parsers keep only the final value, while other systems may behave differently. Avoid duplicates entirely. Do not rely on object key order for business logic, and use arrays when order carries meaning. These small conventions prevent a surprising number of cross-language defects.</p>
+          </section>
+
+          <section id="faq">
+            <h3>Practical JSON and TypeScript FAQ</h3>
+            <div class="faq-item"><h4>Is my JSON uploaded or stored?</h4><p>No. Formatting, validation, minification, syntax highlighting, and interface generation happen in your browser. QuickJSON does not send the text in the editor to an application server or save it in local storage.</p></div>
+            <div class="faq-item"><h4>Why is valid JavaScript sometimes invalid JSON?</h4><p>JavaScript object literals support features JSON does not, including comments, single quotes, trailing commas, computed keys, methods, and <code>undefined</code>. JSON intentionally uses a smaller grammar so different languages can exchange it consistently.</p></div>
+            <div class="faq-item"><h4>Can JSON contain comments?</h4><p>Standard JSON cannot. Put explanatory metadata in ordinary properties, maintain separate documentation, or use a format explicitly designed for comments. Removing comments automatically can be unsafe because comment-like text may occur inside strings.</p></div>
+            <div class="faq-item"><h4>Why did an empty array become unknown[]?</h4><p>There are no elements from which to infer a type. <code>unknown[]</code> makes that uncertainty explicit and is safer than guessing. Replace it with the contract’s real element type after checking documentation or additional responses.</p></div>
+            <div class="faq-item"><h4>Does generated TypeScript validate API responses?</h4><p>No. Interfaces improve static checking in your source code but do not inspect runtime values. Pair them with a runtime schema validator or a carefully written type guard at every untrusted boundary.</p></div>
+            <div class="faq-item"><h4>What is the maximum JSON size?</h4><p>QuickJSON imposes no artificial limit. The practical limit depends on your device, browser memory, and document complexity. Very large files may take longer because parsing, formatting, highlighting, and type inference each create intermediate data.</p></div>
+          </section>
+        </div>
+      </div>
+    </article>
+  <aside class="zf-related" aria-labelledby="rel-title"><h2 id="rel-title">Related tools</h2><div class="zf-related-grid"><a class="zf-card" href="/tools/text-diff"><b>Text & Code Diff</b><span>Compare two versions of text, code, or JSON in split and unified views without uploading either version.</span></a><a class="zf-card" href="/tools/markdown-converter"><b>Markdown Converter</b><span>Turn pasted rich text or HTML into clean Markdown, preview it, and download the result locally.</span></a><a class="zf-card" href="/tools/dev-units"><b>Unit & Color Converter</b><span>Convert CSS units, color formats, and Unix timestamps with copy-ready output that stays in your browser.</span></a></div><p class="zf-guide-cta">Deep dive: <a href="/guides/developer-workflow-privacy">Read the related practical guide</a></p></aside><p class="zf-updated">Last updated: November 22, 2026</p></main><footer class="zf-footer"><div class="zf-wrap zf-footer-grid"><div class="zf-footer-brand"><a class="zf-logo" href="/">ZenFlow <b>Tools</b></a><p>Free browser tools for focused work, clean text, and faster development. Everything runs locally in your browser — no accounts, no uploads.</p></div><nav aria-label="Free tools"><p class="zf-footer-title">Tools</p><ul><li><a href="/tools/pomodoro">Pomodoro Timer & Focus Soundscapes</a></li><li><a href="/tools/password-generator">Password Generator & Strength Checker</a></li><li><a href="/tools/word-counter">Word Counter & Speaking Time</a></li><li><a href="/tools/text-diff">Text & Code Diff</a></li><li><a href="/tools/dev-units">Unit & Color Converter</a></li><li><a href="/tools/markdown-converter">Markdown Converter</a></li><li><a href="/tools/json-formatter">JSON Formatter & TypeScript Generator</a></li><li><a href="/tools/og-preview">Social & OG Preview</a></li><li><a href="/tools/cron-builder">Cron Schedule Builder</a></li><li><a href="/tools/svg-optimizer">SVG Optimizer & Converter</a></li></ul></nav><nav aria-label="Guides"><p class="zf-footer-title">Guides</p><ul><li><a href="/guides/pomodoro-focus-science">Focus intervals</a></li><li><a href="/guides/developer-workflow-privacy">Private workflows</a></li><li><a href="/guides/ambient-sound-productivity">Ambient sound</a></li></ul></nav><nav aria-label="Site"><p class="zf-footer-title">Site</p><ul><li><a href="/about">About</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms of Service</a></li><li><a href="/contact">Contact</a></li></ul></nav></div><div class="zf-wrap zf-footer-bottom"><p>© 2026 ZenFlow Tools. Built and maintained by wuyung.</p><p>No accounts. No uploads. Your text and files stay on your device.</p></div></footer><script src="/assets/hub.js"></script><script>
+    (() => {
+      "use strict";
+
+      const input = document.getElementById("jsonInput");
+      const lineNumbers = document.getElementById("lineNumbers");
+      const validity = document.getElementById("validity");
+      const inputCounts = document.getElementById("inputCounts");
+      const outputCounts = document.getElementById("outputCounts");
+      const outputCode = document.getElementById("outputCode");
+      const outputMode = document.getElementById("outputMode");
+      const formattedTab = document.getElementById("formattedTab");
+      const typescriptTab = document.getElementById("typescriptTab");
+      const toast = document.getElementById("toast");
+      const toastText = document.getElementById("toastText");
+      const encoder = new TextEncoder();
+      let parsedValue;
+      let formattedOutput = "";
+      let typescriptOutput = "";
+      let activeMode = "json";
+      let debounceTimer;
+      let toastTimer;
+
+      const sample = {
+        project: "QuickJSON",
+        version: 1,
+        isPrivate: true,
+        owner: { name: "Ada", role: "Frontend Engineer", verified: true },
+        features: ["format", "validate", "generate-types"],
+        metrics: { responseMs: 0.1, uploads: 0 },
+        releases: [
+          { id: "v1", stable: true, notes: null },
+          { id: "v2", stable: false, notes: "In progress" }
+        ]
+      };
+
+      function byteCount(value) {
+        return encoder.encode(value).length;
+      }
+
+      function updateLineNumbers() {
+        const count = Math.max(1, input.value.split("\n").length);
+        lineNumbers.textContent = Array.from({ length: count }, (_, index) => index + 1).join("\n");
+        lineNumbers.scrollTop = input.scrollTop;
+      }
+
+      function escapeHtml(value) {
+        return String(value).replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[char]);
+      }
+
+      function highlightJson(json) {
+        const escaped = escapeHtml(json);
+        return escaped.replace(/(&quot;(?:\\u[a-fA-F0-9]{4}|\\[^u]|[^\\&])*&quot;)(\s*:)?|\b(true|false)\b|\b(null)\b|-?\d+(?:\.\d+)?(?:[eE][+\-]?\d+)?/g, (match, string, colon, bool, nil) => {
+          if (string) return `<span class="${colon ? "key" : "string"}">${string}</span>${colon ? '<span class="punctuation">:</span>' : ""}`;
+          if (bool) return `<span class="boolean">${match}</span>`;
+          if (nil) return `<span class="null">${match}</span>`;
+          return `<span class="number">${match}</span>`;
+        });
+      }
+
+      function highlightTypeScript(code) {
+        let result = escapeHtml(code);
+        result = result.replace(/\b(export|interface|type|readonly)\b/g, '<span class="keyword">$1</span>');
+        result = result.replace(/\b(string|number|boolean|null|unknown|Root|[A-Z][A-Za-z0-9_]*)\b/g, '<span class="type">$1</span>');
+        result = result.replace(/^(\s*)([A-Za-z_$][\w$]*|&quot;[^&]+&quot;)(\??)(:)/gm, '$1<span class="property">$2</span>$3<span class="punctuation">$4</span>');
+        return result;
+      }
+
+      function toPascalCase(value) {
+        const cleaned = String(value).replace(/([a-z0-9])([A-Z])/g, "$1 $2").replace(/[^a-zA-Z0-9]+/g, " ").trim();
+        const name = cleaned.split(/\s+/).filter(Boolean).map(part => part.charAt(0).toUpperCase() + part.slice(1)).join("") || "Nested";
+        return /^\d/.test(name) ? `Type${name}` : name;
+      }
+
+      function propertyName(key) {
+        return /^[A-Za-z_$][\w$]*$/.test(key) ? key : JSON.stringify(key);
+      }
+
+      function generateTypeScript(root) {
+        const interfaces = [];
+        const usedNames = new Set();
+
+        function uniqueName(base) {
+          let candidate = toPascalCase(base);
+          let index = 2;
+          while (usedNames.has(candidate)) candidate = `${toPascalCase(base)}${index++}`;
+          usedNames.add(candidate);
+          return candidate;
+        }
+
+        function union(types) {
+          const flat = [...new Set(types)];
+          return flat.length ? flat.join(" | ") : "unknown";
+        }
+
+        function infer(value, suggestedName) {
+          if (value === null) return "null";
+          if (Array.isArray(value)) {
+            if (value.length === 0) return "unknown[]";
+            const objectMembers = value.every(member => member !== null && typeof member === "object" && !Array.isArray(member));
+            if (objectMembers) {
+              const name = uniqueName(`${suggestedName}Item`);
+              const keys = [...new Set(value.flatMap(member => Object.keys(member)))];
+              const properties = keys.map(key => {
+                const presentValues = value.filter(member => Object.prototype.hasOwnProperty.call(member, key)).map(member => member[key]);
+                const optional = presentValues.length < value.length ? "?" : "";
+                const types = presentValues.map(member => infer(member, `${name}${toPascalCase(key)}`));
+                return `  ${propertyName(key)}${optional}: ${union(types)};`;
+              });
+              interfaces.push({ name, properties });
+              return `${name}[]`;
+            }
+            const memberTypes = value.map((member, index) => infer(member, `${suggestedName}Item${index > 0 ? index + 1 : ""}`));
+            const member = union(memberTypes);
+            return member.includes(" | ") ? `(${member})[]` : `${member}[]`;
+          }
+          if (typeof value === "object") {
+            const name = uniqueName(suggestedName);
+            const properties = Object.entries(value).map(([key, member]) => `  ${propertyName(key)}: ${infer(member, `${name}${toPascalCase(key)}`)};`);
+            interfaces.push({ name, properties });
+            return name;
+          }
+          return typeof value;
+        }
+
+        const rootType = infer(root, "Root");
+        if (root !== null && typeof root === "object" && !Array.isArray(root)) {
+          const rootIndex = interfaces.findIndex(item => item.name === rootType);
+          if (rootIndex > -1) {
+            const [rootInterface] = interfaces.splice(rootIndex, 1);
+            interfaces.push(rootInterface);
+          }
+        }
+        const blocks = interfaces.reverse().map(item => `export interface ${item.name} {\n${item.properties.join("\n")}\n}`);
+        if (!blocks.length || Array.isArray(root)) blocks.push(`export type Root = ${rootType};`);
+        return blocks.join("\n\n");
+      }
+
+      function errorDetails(error, source) {
+        const message = error instanceof Error ? error.message : "Invalid JSON";
+        const positionMatch = message.match(/position\s+(\d+)/i) || message.match(/at\s+position\s+(\d+)/i);
+        if (!positionMatch) return message;
+        const position = Number(positionMatch[1]);
+        const before = source.slice(0, position);
+        const line = before.split("\n").length;
+        const column = position - before.lastIndexOf("\n");
+        return `Line ${line}, column ${column}: ${message}`;
+      }
+
+      function renderOutput() {
+        const text = activeMode === "json" ? formattedOutput : typescriptOutput;
+        outputMode.textContent = activeMode === "json" ? "Formatted JSON" : "TypeScript Interfaces";
+        if (!text) {
+          outputCode.innerHTML = `<span class="empty-output">${input.value.trim() ? "Fix the JSON error to generate output." : "Valid formatted JSON will appear here."}</span>`;
+          outputCounts.textContent = "0 lines · 0 bytes";
+          return;
+        }
+        outputCode.innerHTML = activeMode === "json" ? highlightJson(text) : highlightTypeScript(text);
+        outputCounts.textContent = `${text.split("\n").length.toLocaleString()} lines · ${byteCount(text).toLocaleString()} bytes`;
+      }
+
+      function processInput() {
+        const source = input.value;
+        updateLineNumbers();
+        inputCounts.textContent = `${source.length.toLocaleString()} chars · ${byteCount(source).toLocaleString()} bytes`;
+        if (!source.trim()) {
+          parsedValue = undefined;
+          formattedOutput = "";
+          typescriptOutput = "";
+          validity.className = "validity";
+          validity.textContent = "Waiting for JSON";
+          renderOutput();
+          return;
+        }
+        try {
+          parsedValue = JSON.parse(source);
+          formattedOutput = JSON.stringify(parsedValue, null, 2);
+          typescriptOutput = generateTypeScript(parsedValue);
+          validity.className = "validity valid";
+          validity.textContent = "Valid JSON";
+        } catch (error) {
+          parsedValue = undefined;
+          formattedOutput = "";
+          typescriptOutput = "";
+          validity.className = "validity invalid";
+          validity.textContent = errorDetails(error, source);
+        }
+        renderOutput();
+      }
+
+      function scheduleProcess() {
+        clearTimeout(debounceTimer);
+        updateLineNumbers();
+        debounceTimer = setTimeout(processInput, 100);
+      }
+
+      function setMode(mode) {
+        activeMode = mode;
+        const isJson = mode === "json";
+        formattedTab.setAttribute("aria-selected", String(isJson));
+        typescriptTab.setAttribute("aria-selected", String(!isJson));
+        renderOutput();
+      }
+
+      function showToast(message, isError = false) {
+        toastText.textContent = message;
+        toast.style.borderColor = isError ? "rgba(251,113,133,.3)" : "rgba(74,222,128,.22)";
+        toast.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove("show"), 2200);
+      }
+
+      function prettify() {
+        if (parsedValue === undefined) return showToast("Enter valid JSON first.", true);
+        input.value = JSON.stringify(parsedValue, null, 2);
+        processInput();
+        showToast("JSON prettified with 2 spaces.");
+      }
+
+      function minify() {
+        if (parsedValue === undefined) return showToast("Enter valid JSON first.", true);
+        input.value = JSON.stringify(parsedValue);
+        processInput();
+        showToast("JSON minified.");
+      }
+
+      async function copyOutput() {
+        const text = activeMode === "json" ? formattedOutput : typescriptOutput;
+        if (!text) return showToast("There is no output to copy.", true);
+        try {
+          await navigator.clipboard.writeText(text);
+          showToast("Copied to clipboard!");
+        } catch (_) {
+          const helper = document.createElement("textarea");
+          helper.value = text;
+          helper.style.position = "fixed";
+          helper.style.opacity = "0";
+          document.body.appendChild(helper);
+          helper.select();
+          document.execCommand("copy");
+          helper.remove();
+          showToast("Copied to clipboard!");
+        }
+      }
+
+      function downloadOutput() {
+        const text = activeMode === "json" ? formattedOutput : typescriptOutput;
+        if (!text) return showToast("There is no output to download.", true);
+        const blob = new Blob([text], { type: activeMode === "json" ? "application/json" : "text/typescript" });
+        const url = URL.createObjectURL(blob);
+        const anchor = document.createElement("a");
+        anchor.href = url;
+        anchor.download = activeMode === "json" ? "formatted.json" : "quickjson-types.ts";
+        document.body.appendChild(anchor);
+        anchor.click();
+        anchor.remove();
+        URL.revokeObjectURL(url);
+        showToast("Download started.");
+      }
+
+      input.addEventListener("input", scheduleProcess);
+      input.addEventListener("scroll", () => { lineNumbers.scrollTop = input.scrollTop; });
+      input.addEventListener("keydown", event => {
+        if (event.key === "Tab") {
+          event.preventDefault();
+          const start = input.selectionStart;
+          const end = input.selectionEnd;
+          input.setRangeText("  ", start, end, "end");
+          scheduleProcess();
+        }
+        if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+          event.preventDefault();
+          prettify();
+        }
+      });
+      document.getElementById("prettifyBtn").addEventListener("click", prettify);
+      document.getElementById("minifyBtn").addEventListener("click", minify);
+      document.getElementById("sampleBtn").addEventListener("click", () => { input.value = JSON.stringify(sample, null, 2); processInput(); input.focus(); showToast("Sample JSON loaded."); });
+      document.getElementById("clearBtn").addEventListener("click", () => { input.value = ""; processInput(); input.focus(); });
+      formattedTab.addEventListener("click", () => setMode("json"));
+      typescriptTab.addEventListener("click", () => setMode("ts"));
+      document.getElementById("copyBtn").addEventListener("click", copyOutput);
+      document.getElementById("downloadBtn").addEventListener("click", downloadOutput);
+
+      processInput();
+})();</script></body></html>
