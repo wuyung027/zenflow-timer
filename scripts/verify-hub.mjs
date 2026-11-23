@@ -9,10 +9,14 @@ const pages = {'/':'index.html','/tools':'tools/index.html','/guides':'guides/in
 for (const s of tools) pages[`/tools/${s}`] = `tools/${s}.html`;
 for (const s of guides) pages[`/guides/${s}`] = `guides/${s}.html`;
 const min = {'/':700,'/tools':200,'/guides':200,'/about':400,'/privacy':600,'/terms':600,'/contact':250};
-for (const s of tools) min[`/tools/${s}`] = 1200;
-for (const s of guides) min[`/guides/${s}`] = 1000;
+// Word count is only an "is the page empty?" guard, not a quality target.
+// Padding pages to hit a number is what produced the repeated workflow text;
+// the duplicate-sentence check below guards against that instead.
+for (const s of tools) min[`/tools/${s}`] = 30;
+for (const s of guides) min[`/guides/${s}`] = 600;
 const banned = ['advertisement area','advertisement ·','reserved space','this copy','has not been configured','placeholders only','lorem ipsum','wooyoung','click the ads','support us by clicking','[your_email]'];
 const failures = [];
+const mainByPage = {};
 const plain = s => s.replace(/<(script|style)[^>]*>[\s\S]*?<\/\1>/gi,' ').replace(/<[^>]+>/g,' ').replace(/&[a-z#0-9]+;/gi,' ');
 const words = s => (plain(s).match(/[A-Za-z][A-Za-z'-]+/g) || []).length;
 
@@ -34,10 +38,37 @@ for (const [url, rel] of Object.entries(pages)) {
   }
   let main = source.match(/<main[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? source;
   main = main.replace(/<aside class="zf-related"[\s\S]*?<\/aside>/g, ' ');
+  mainByPage[rel] = main;
   const count = words(main);
   if (count < min[url]) failures.push(`${rel}: only ${count} words (min ${min[url]})`);
   for (const term of banned) if (low.includes(term)) failures.push(`${rel}: banned ${term}`);
 }
+
+// The same sentence (8+ words) must not appear in the main content of two pages.
+// Directory cards (tool/guide listings) are navigation, like the related aside, so skip them.
+const owners = new Map();
+for (const [rel, main] of Object.entries(mainByPage)) {
+  const text = main
+    .replace(/<(article|a) class="zf-card"[\s\S]*?<\/\1>/g, ' ')
+    .replace(/<(script|style)[^>]*>[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<\/(p|h[1-6]|li|summary|td|th|dt|dd|figcaption)>/gi, '\n')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&[a-z#0-9]+;/gi, ' ');
+  for (const raw of text.split(/\n|(?<=[.!?])\s+/)) {
+    const sentence = raw.replace(/\s+/g, ' ').trim();
+    if (sentence.split(' ').length < 8) continue;
+    if (!owners.has(sentence)) owners.set(sentence, new Set());
+    owners.get(sentence).add(rel);
+  }
+}
+for (const [sentence, pagesWith] of owners) {
+  if (pagesWith.size > 1) failures.push(`duplicate sentence on ${[...pagesWith].join(', ')}: "${sentence.slice(0, 90)}"`);
+}
+
+// The 404 screen has no publisher content, so it must not load AdSense.
+const notFound = fs.readFileSync(path.join(ROOT, '404.html'), 'utf8');
+if (/adsbygoogle|google-adsense-account/.test(notFound)) failures.push('404.html: AdSense code present');
+if (!/<meta name="google-site-verification" content="[^"]+">/.test(fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8'))) failures.push('index.html: google-site-verification meta missing');
 
 const sitemap = fs.readFileSync(path.join(ROOT,'sitemap.xml'),'utf8');
 const sitemapUrls = new Set([...sitemap.matchAll(/<loc>https:\/\/zenflow-timer\.vercel\.app([^<]*)<\/loc>/g)].map(m => m[1]));
