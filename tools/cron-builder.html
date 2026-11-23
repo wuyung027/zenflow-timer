@@ -51,7 +51,7 @@
         for(let value=start;value<=end;value+=step) values.add(def.name==='Day of week'&&value===7?0:value);
       }
       if(!values.size) throw new Error(def.name+': select at least one value.');
-      return {text,values:[...values].sort((a,b)=>a-b),unrestricted:text.includes('*')};
+      return {text,values:[...values].sort((a,b)=>a-b),unrestricted:text==='*',star:text.startsWith('*')};
     }
     function parseExpression(text){
       const tokens=text.trim().split(/\s+/).filter(Boolean);
@@ -61,9 +61,8 @@
     function dayMatches(fields,day){
       const dom=fields[2],dow=fields[4];
       const domMatch=dom.values.includes(day.getDate()),dowMatch=dow.values.includes(day.getDay());
-      if(dom.unrestricted&&dow.unrestricted) return true;
-      if(dom.unrestricted) return dowMatch;
-      if(dow.unrestricted) return domMatch;
+      // Like cronie: if either day field starts with *, both must match; otherwise either may match.
+      if(dom.star||dow.star) return domMatch&&dowMatch;
       return domMatch||dowMatch;
     }
     function nextRuns(parsed,now=new Date(),limit=5){
@@ -109,17 +108,18 @@
       let time;
       if(oneMinute&&oneHour) time='At '+String(f[1].values[0]).padStart(2,'0')+':'+String(f[0].values[0]).padStart(2,'0');
       else if(t[0]==='*'&&t[1]==='*') time='Every minute';
-      else if(/^\*\/\d+$/.test(t[0])&&t[1]==='*') time='Every '+t[0].slice(2)+' minutes';
+      else if(/^\*\/\d+$/.test(t[0])&&60%Number(t[0].slice(2))===0&&t[1]==='*') time='Every '+t[0].slice(2)+' minutes';
       else if(oneMinute&&t[1]==='*') time='At minute '+f[0].values[0]+' of every hour';
       else{
-        const minutePart=t[0]==='*'?'every minute':/^\*\/\d+$/.test(t[0])?'every '+t[0].slice(2)+' minutes':'minutes '+readableValues(f[0],0);
-        const hourPart=t[1]==='*'?'every hour':/^\*\/\d+$/.test(t[1])?'every '+t[1].slice(2)+' hours':'hours '+readableValues(f[1],1);
+        const minutePart=t[0]==='*'?'every minute':/^\*\/\d+$/.test(t[0])&&60%Number(t[0].slice(2))===0?'every '+t[0].slice(2)+' minutes':'minutes '+readableValues(f[0],0);
+        const hourPart=t[1]==='*'?'every hour':/^\*\/\d+$/.test(t[1])&&24%Number(t[1].slice(2))===0?'every '+t[1].slice(2)+' hours':'hours '+readableValues(f[1],1);
         time='At '+minutePart+' during '+hourPart;
       }
       let day;
       if(f[2].unrestricted&&f[4].unrestricted) day='every day';
       else if(f[2].unrestricted) day=t[4]==='1-5'?'on weekdays':'on '+readableValues(f[4],4);
       else if(f[4].unrestricted) day='on day '+readableValues(f[2],2)+' of the month';
+      else if(f[2].star||f[4].star) day='on day '+readableValues(f[2],2)+' of the month when it is also '+readableValues(f[4],4);
       else day='when day '+readableValues(f[2],2)+' of the month or '+readableValues(f[4],4)+' matches';
       const month=f[3].unrestricted?'':' in '+readableValues(f[3],3);
       return time+', '+day+month+'.';
