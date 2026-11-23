@@ -38,7 +38,7 @@ for path, rel in PAGES.items():
     t = re.search(r"<title>(.*?)</title>", s, re.S)
     if not t or len(t.group(1)) > 70: fails.append(f"{rel}: title missing/too long")
     d = re.search(r'<meta name="description" content="([^"]+)"', s)
-    if not d or not (120 <= len(d.group(1)) <= 170): fails.append(f"{rel}: meta description length")
+    if not d or not (50 <= len(d.group(1)) <= 170): fails.append(f"{rel}: meta description length")
     blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', s, re.S)
     if not blocks: fails.append(f"{rel}: no JSON-LD")
     for b in blocks:

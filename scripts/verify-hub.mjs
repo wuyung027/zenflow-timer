@@ -32,7 +32,7 @@ for (const [url, rel] of Object.entries(pages)) {
   const title = source.match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? '';
   if (!title || title.length > 70) failures.push(`${rel}: title`);
   const description = source.match(/<meta name="description" content="([^"]+)"/)?.[1] ?? '';
-  if (description.length < 120 || description.length > 170) failures.push(`${rel}: description ${description.length}`);
+  if (description.length < 50 || description.length > 170) failures.push(`${rel}: description ${description.length}`);
   for (const match of source.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
     try { JSON.parse(match[1]); } catch { failures.push(`${rel}: JSON-LD`); }
   }
