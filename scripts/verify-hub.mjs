@@ -8,23 +8,30 @@ const guides = ['pomodoro-focus-science','developer-workflow-privacy','ambient-s
 const pages = {'/':'index.html','/tools':'tools/index.html','/guides':'guides/index.html','/about':'about.html','/privacy':'privacy.html','/terms':'terms.html','/contact':'contact.html'};
 for (const s of tools) pages[`/tools/${s}`] = `tools/${s}.html`;
 for (const s of guides) pages[`/guides/${s}`] = `guides/${s}.html`;
+// Korean pages and their English counterparts (hreflang pairs).
+const koPairs = {'/':'/ko','/tools':'/ko/tools','/about':'/ko/about','/privacy':'/ko/privacy','/contact':'/ko/contact','/tools/pomodoro':'/ko/tools/pomodoro','/tools/word-counter':'/ko/tools/word-counter'};
+const koFiles = {'/ko':'ko/index.html','/ko/tools':'ko/tools/index.html','/ko/about':'ko/about.html','/ko/privacy':'ko/privacy.html','/ko/contact':'ko/contact.html','/ko/tools/pomodoro':'ko/tools/pomodoro.html','/ko/tools/word-counter':'ko/tools/word-counter.html'};
+Object.assign(pages, koFiles);
 const min = {'/':700,'/tools':200,'/guides':200,'/about':400,'/privacy':600,'/terms':600,'/contact':250};
 // Word count is only an "is the page empty?" guard, not a quality target.
 // Padding pages to hit a number is what produced the repeated workflow text;
 // the duplicate-sentence check below guards against that instead.
 for (const s of tools) min[`/tools/${s}`] = 30;
 for (const s of guides) min[`/guides/${s}`] = 600;
+Object.assign(min, {'/ko':300,'/ko/tools':100,'/ko/about':150,'/ko/privacy':300,'/ko/contact':120,'/ko/tools/pomodoro':30,'/ko/tools/word-counter':30});
 const banned = ['advertisement area','advertisement ·','reserved space','this copy','has not been configured','placeholders only','lorem ipsum','wooyoung','click the ads','support us by clicking','[your_email]'];
 const failures = [];
 const mainByPage = {};
 const plain = s => s.replace(/<(script|style)[^>]*>[\s\S]*?<\/\1>/gi,' ').replace(/<[^>]+>/g,' ').replace(/&[a-z#0-9]+;/gi,' ');
-const words = s => (plain(s).match(/[A-Za-z][A-Za-z'-]+/g) || []).length;
+const words = s => (plain(s).match(/[A-Za-z][A-Za-z'-]+|[\uAC00-\uD7A3]+/g) || []).length;
 
 for (const [url, rel] of Object.entries(pages)) {
   const fp = path.join(ROOT, rel);
   if (!fs.existsSync(fp)) { failures.push(`MISSING ${rel}`); continue; }
   const source = fs.readFileSync(fp, 'utf8');
   const low = plain(source).toLowerCase();
+  const wantLang = url === '/ko' || url.startsWith('/ko/') ? 'ko' : 'en';
+  if (!source.startsWith(`<!doctype html><html lang="${wantLang}">`)) failures.push(`${rel}: html lang should be ${wantLang}`);
   if ((source.match(/<h1[^>]*>/g) || []).length !== 1) failures.push(`${rel}: h1 count`);
   if ((source.match(/pagead\/js\/adsbygoogle\.js\?client=ca-pub-3686574001707459/g) || []).length !== 1) failures.push(`${rel}: adsense script count`);
   if ((source.match(/<meta name="google-adsense-account" content="ca-pub-3686574001707459">/g) || []).length !== 1) failures.push(`${rel}: adsense account meta count`);
@@ -63,6 +70,15 @@ for (const [rel, main] of Object.entries(mainByPage)) {
 }
 for (const [sentence, pagesWith] of owners) {
   if (pagesWith.size > 1) failures.push(`duplicate sentence on ${[...pagesWith].join(', ')}: "${sentence.slice(0, 90)}"`);
+}
+
+// Each language pair must list en, ko and x-default on both pages.
+for (const [en, ko] of Object.entries(koPairs)) {
+  const want = [`<link rel="alternate" hreflang="en" href="${BASE}${en}">`, `<link rel="alternate" hreflang="ko" href="${BASE}${ko}">`, `<link rel="alternate" hreflang="x-default" href="${BASE}${en}">`];
+  for (const rel of [pages[en], pages[ko]]) {
+    const src = fs.existsSync(path.join(ROOT, rel)) ? fs.readFileSync(path.join(ROOT, rel), 'utf8') : '';
+    for (const tag of want) if (!src.includes(tag)) failures.push(`${rel}: missing ${tag}`);
+  }
 }
 
 // The 404 screen has no publisher content, so it must not load AdSense.

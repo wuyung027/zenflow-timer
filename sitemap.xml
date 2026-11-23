@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>https://zenflow-timer.vercel.app/</loc><lastmod>2026-11-23</lastmod></url>
-<url><loc>https://zenflow-timer.vercel.app/tools</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/tools</loc><lastmod>2026-11-23</lastmod></url>
 <url><loc>https://zenflow-timer.vercel.app/tools/pomodoro</loc><lastmod>2026-11-23</lastmod></url>
 <url><loc>https://zenflow-timer.vercel.app/tools/password-generator</loc><lastmod>2026-11-23</lastmod></url>
 <url><loc>https://zenflow-timer.vercel.app/tools/word-counter</loc><lastmod>2026-11-23</lastmod></url>
@@ -20,4 +20,11 @@
 <url><loc>https://zenflow-timer.vercel.app/privacy</loc><lastmod>2026-11-23</lastmod></url>
 <url><loc>https://zenflow-timer.vercel.app/terms</loc><lastmod>2026-11-22</lastmod></url>
 <url><loc>https://zenflow-timer.vercel.app/contact</loc><lastmod>2026-11-22</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/ko</loc><lastmod>2026-11-23</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/ko/tools</loc><lastmod>2026-11-23</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/ko/tools/pomodoro</loc><lastmod>2026-11-23</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/ko/tools/word-counter</loc><lastmod>2026-11-23</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/ko/about</loc><lastmod>2026-11-23</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/ko/privacy</loc><lastmod>2026-11-23</lastmod></url>
+<url><loc>https://zenflow-timer.vercel.app/ko/contact</loc><lastmod>2026-11-23</lastmod></url>
 </urlset>
